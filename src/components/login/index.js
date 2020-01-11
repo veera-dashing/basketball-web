@@ -2,12 +2,23 @@ import React from "react";
 import useFormValidation from "../form/useFormValidation";
 import validateAuth from "../form/validateAuth";
 import './style.css';
+import {useAuth} from "../../setup/use-auth";
+
 const INITIAL_STATE = {
     email: "",
     password: ""
 };
 
 export function Register() {
+    const auth = useAuth();
+    console.log('auth ------------', auth);
+    const onSubmit = (values) => {
+        console.log('reached here -----------', values);
+        auth.signup(values.email, values.password);
+    }
+    const onLogin = ()=>{
+        auth.social();
+    }
     const {
         handleSubmit,
         handleChange,
@@ -15,7 +26,7 @@ export function Register() {
         values,
         errors,
         isSubmitting
-    } = useFormValidation(INITIAL_STATE, validateAuth);
+    } = useFormValidation(INITIAL_STATE, validateAuth, onSubmit);
     return (
         <div className="container">
             <h1>Register Here</h1>
@@ -41,8 +52,11 @@ export function Register() {
                 />
                 {errors.password && <p className="error-text">{errors.password}</p>}
                 <div>
+                    <button disabled={isSubmitting} type="button" onClick={onLogin}>
+                        Login
+                    </button>
                     <button disabled={isSubmitting} type="submit">
-                        Submit
+                        Register
                     </button>
                 </div>
             </form>
