@@ -5,6 +5,9 @@ import {ProvideAuth} from "./setup/use-auth.js";
 import {Contact} from "./components/contact/contact";
 import {Dashboard} from "./components/dashboard/dashboard";
 import GitUsers from "./pages/GitUsers";
+import {UserIsAuthenticated} from "./setup/ProtectedRoute";
+import {Root} from "./setup/Root";
+import SchoolPage from "./pages/SchoolPage";
 
 function App() {
     return (
@@ -23,6 +26,9 @@ function App() {
                     <li>
                         <Link to="/git/">Git Users</Link>
                     </li>
+                    <li>
+                        <Link to="/schools/">Schools</Link>
+                    </li>
                 </ul>
                 <Switch>
 
@@ -32,6 +38,7 @@ function App() {
                         <Route path="/contact" component={Contact}/>
                         <Route path="/dashboard/:id" component={Dashboard}/>
                         <Route path="/git/" component={GitUsers}/>
+                        <Route path="/schools" component={SchoolPage} />
                     </ProvideAuth>
 
                 </Switch>

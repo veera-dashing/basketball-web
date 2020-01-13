@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 export const GitUsersListItem = ({user}) => {
     console.log('user----------', user);

@@ -8,6 +8,6 @@ export const Dashboard = () => {
         return (<h1>No user</h1>)
     }
     return (
-        <h1>Dashboard</h1>
+        <h1>Dashboard {auth.user.displayName}</h1>
     )
 }

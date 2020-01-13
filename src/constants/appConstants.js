@@ -5,3 +5,5 @@ export const USER_ACTION = {
     COPY: 3,
     VIEW: 4
 };
+
+export const UNAUTHED_REDIRECT='/'
