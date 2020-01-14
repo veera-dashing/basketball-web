@@ -16,7 +16,6 @@ export const RenderInputField = ({name, label, type, formik,...props}) => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values[name]}
-                checked={formik.values[name]}
                 {...props}
             />
         </label>

@@ -69,3 +69,6 @@ export const SchoolSchema = Yup.object().shape({
 //     .required(
 //         'You have to agree with our Terms and Conditions!'
 //     ),
+
+
+

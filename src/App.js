@@ -8,6 +8,7 @@ import GitUsers from "./pages/GitUsers";
 import {UserIsAuthenticated} from "./setup/ProtectedRoute";
 import {Root} from "./setup/Root";
 import SchoolPage from "./pages/SchoolPage";
+import SamplePage from "./pages/SamplePage";
 
 function App() {
     return (
@@ -29,6 +30,9 @@ function App() {
                     <li>
                         <Link to="/schools/">Schools</Link>
                     </li>
+                    <li>
+                        <Link to="/sample/">Sample Form</Link>
+                    </li>
                 </ul>
                 <Switch>
 
@@ -39,6 +43,7 @@ function App() {
                         <Route path="/dashboard/:id" component={Dashboard}/>
                         <Route path="/git/" component={GitUsers}/>
                         <Route path="/schools" component={SchoolPage} />
+                        <Route path="/sample" component={SamplePage} />
                     </ProvideAuth>
 
                 </Switch>
