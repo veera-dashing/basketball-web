@@ -9,6 +9,7 @@ import {UserIsAuthenticated} from "./setup/ProtectedRoute";
 import {Root} from "./setup/Root";
 import SchoolPage from "./pages/SchoolPage";
 import SamplePage from "./pages/SamplePage";
+import {GitUserDetails} from "./components/git/GitUsersDetails";
 
 function App() {
     return (
@@ -41,7 +42,8 @@ function App() {
                         <Route exact path="/" component={Register}/>
                         <Route path="/contact" component={Contact}/>
                         <Route path="/dashboard/:id" component={Dashboard}/>
-                        <Route path="/git/" component={GitUsers}/>
+                        <Route path="/git/"  exact  component={GitUsers}/>
+                        <Route path="/git/:id" exact component={GitUserDetails}/>
                         <Route path="/schools" component={SchoolPage} />
                         <Route path="/sample" component={SamplePage} />
                     </ProvideAuth>
