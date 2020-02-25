@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const GitUsersListItem = ({user,onGetUserDetails}) => {
+export const GitUsersListItem = ({ user, onGetUserDetails }) => {
     return (
         <>
             <tr>

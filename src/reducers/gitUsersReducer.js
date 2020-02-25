@@ -12,7 +12,7 @@ export const gitUserReducer = (state = {
 
             }
         //Step 7.2
-        case TYPES.FETCH_GIT_USERS_FAILURE:
+        case TYPES.FETCH_GIT_USERS_ERROR:
             return {
                 ...state,
                 users: []

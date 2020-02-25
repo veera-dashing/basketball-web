@@ -1,8 +1,8 @@
 import locationHelperBuilder from 'redux-auth-wrapper/history4/locationHelper';
-import {connectedRouterRedirect} from 'redux-auth-wrapper/history4/redirect'
+import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect'
 import createHistory from 'history/createBrowserHistory'
-import {Loading} from "../common/Loading";
-import {UNAUTHED_REDIRECT} from "../constants/appConstants";
+import { Loading } from "../common/Loading";
+import { UNAUTHED_REDIRECT } from "../constants/appConstants";
 
 const locationHelper = locationHelperBuilder({});
 const browserHistory = createHistory()
@@ -13,13 +13,13 @@ export const UserIsAuthenticated = connectedRouterRedirect({
     allowRedirectBack: true,
     redirectPath: (state, ownProps) =>
         locationHelper.getRedirectQueryParam(ownProps) || '/login',
-    authenticatingSelector: ({firebase: {auth, profile, isInitializing}}) =>
+    authenticatingSelector: ({ firebase: { auth, profile, isInitializing } }) =>
         !auth.isLoaded || isInitializing === true,
-    authenticatedSelector: ({firebase: {auth}}) =>
+    authenticatedSelector: ({ firebase: { auth } }) =>
         auth.isLoaded && !auth.isEmpty,
     redirectAction: newLoc => (dispatch) => {
         browserHistory.replace(newLoc); // or routerActions.replace
-        dispatch({type: UNAUTHED_REDIRECT});
+        dispatch({ type: UNAUTHED_REDIRECT });
     },
 });
 
@@ -29,12 +29,12 @@ export const UserIsNotAuthenticated = connectedRouterRedirect({
     allowRedirectBack: false,
     redirectPath: (state, ownProps) =>
         locationHelper.getRedirectQueryParam(ownProps) || '/',
-    authenticatingSelector: ({firebase: {auth, isInitializing}}) =>
+    authenticatingSelector: ({ firebase: { auth, isInitializing } }) =>
         !auth.isLoaded || isInitializing === true,
-    authenticatedSelector: ({firebase: {auth}}) =>
+    authenticatedSelector: ({ firebase: { auth } }) =>
         auth.isLoaded && auth.isEmpty,
     redirectAction: newLoc => (dispatch) => {
         browserHistory.replace(newLoc); // or routerActions.replace
-        dispatch({type: UNAUTHED_REDIRECT});
+        dispatch({ type: UNAUTHED_REDIRECT });
     },
 });

@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import {GitUsersListItem} from "./GitUsersListItem";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchGitUsersRequest} from "../../actions/gitActions";
-import {GitUsersListHeader} from "./GitUsersListtHeader";
-import {useHistory} from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { GitUsersListItem } from "./GitUsersListItem";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchGitUsersRequest } from "../../actions/gitActions";
+import { GitUsersListHeader } from "./GitUsersListHeader";
+import { useHistory } from "react-router-dom";
 
 
 export const GitUsersList = () => {
@@ -29,13 +29,14 @@ export const GitUsersList = () => {
     const onGetUserDetails = (id) => {
         history.push(`/git/${id}`);
     }
+
     return (
         <>{users && <>
             <table width={'100%'} border={'1px'}>
-                <GitUsersListHeader/>
+                <GitUsersListHeader />
                 {
                     users.map((user) => {
-                        return (<GitUsersListItem user={user} onGetUserDetails={onGetUserDetails}/>)
+                        return (<GitUsersListItem user={user} onGetUserDetails={onGetUserDetails} />)
                     })
                 }
             </table>

@@ -36,7 +36,7 @@ export function* fetchGitUsers(action) {
         onSuccess(response);
     } catch (error) {
         yield put({
-            type: TYPES.FETCH_GIT_USERS_FAILURE,
+            type: TYPES.FETCH_GIT_USERS_ERROR,
             error
         });
         //Step 4.3: Error Scenario

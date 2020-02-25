@@ -1,15 +1,17 @@
 import React from 'react';
-import {Register} from './components/login/index'
-import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
-import {ProvideAuth} from "./setup/use-auth.js";
-import {Contact} from "./components/contact/contact";
-import {Dashboard} from "./components/dashboard/dashboard";
-import GitUsers from "./pages/GitUsers";
-import {UserIsAuthenticated} from "./setup/ProtectedRoute";
-import {Root} from "./setup/Root";
-import SchoolPage from "./pages/SchoolPage";
+import { Register } from './components/login/index'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { ProvideAuth } from './setup/use-auth.js';
+import { Contact } from './components/contact/contact';
+import { Dashboard } from './components/dashboard/dashboard';
+import GitUsers from './pages/GitUsers';
+import { UserIsAuthenticated } from "./setup/ProtectedRoute";
+import { Root } from "./setup/Root";
+import SchoolsPage from './pages/SchoolsPage';
+import SchoolCreateOrEditPage from './pages/SchoolCreateOrEditPage';
+import SchoolMgmtPage from './pages/SchoolMgmtPage';
 import SamplePage from "./pages/SamplePage";
-import {GitUserDetails} from "./components/git/GitUsersDetails";
+import { GitUserDetails } from './components/git/GitUsersDetails';
 
 function App() {
     return (
@@ -37,14 +39,15 @@ function App() {
                 </ul>
                 <Switch>
 
-
                     <ProvideAuth>
-                        <Route exact path="/" component={Register}/>
-                        <Route path="/contact" component={Contact}/>
-                        <Route path="/dashboard/:id" component={Dashboard}/>
-                        <Route path="/git/"  exact  component={GitUsers}/>
-                        <Route path="/git/:id" exact component={GitUserDetails}/>
-                        <Route path="/schools" component={SchoolPage} />
+                        <Route exact path="/" component={Register} />
+                        <Route path="/contact" component={Contact} />
+                        <Route path="/dashboard/:id" component={Dashboard} />
+                        <Route path="/git/" exact component={GitUsers} />
+                        <Route path="/git/:id" exact component={GitUserDetails} />
+                        <Route path="/schools" component={SchoolsPage} />
+                        <Route path="/schools/:schoolID/CreateEdit" component={SchoolCreateOrEditPage} />
+                        <Route path="/schools/:schoolID/Manage" component={SchoolMgmtPage} />
                         <Route path="/sample" component={SamplePage} />
                     </ProvideAuth>
 
