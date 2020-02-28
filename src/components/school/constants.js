@@ -20,7 +20,7 @@ export const schoolInitialValues = {
 }
 
 
-export const SchoolSchema = Yup.object().shape({
+export const schoolValidationSchema = Yup.object().shape({
     name: Yup.string()
         .min(2, 'Too Short!')
         .max(50, 'Too Long!')
@@ -70,5 +70,19 @@ export const SchoolSchema = Yup.object().shape({
 //         'You have to agree with our Terms and Conditions!'
 //     ),
 
-
-
+export const headers = [
+    {
+        label: 'ID',
+        style: {
+            align: 'left',
+            color: 'red'
+        }
+    },
+    {
+        label: 'Name',
+        style: {
+            align: 'left',
+            color: 'red'
+        }
+    },
+];

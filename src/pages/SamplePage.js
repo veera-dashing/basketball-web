@@ -1,6 +1,6 @@
 import React from 'react';
-import {SampleForm,} from "../components/sample/sampleForm";
-import {SampleList} from "../components/sample/sampleList";
+import { SampleForm, } from "../components/sample/sampleForm";
+import { SampleList } from "../components/sample/sampleList";
 
 class SchoolPage extends React.Component {
 
@@ -11,10 +11,10 @@ class SchoolPage extends React.Component {
 
     render() {
         return (<>
-                <h1> Sample Page</h1>
-                {/*<SampleForm onSaveSchool={this.handleSaveSchool}/>*/}
-                <SampleList/>
-            </>
+            <h1> Sample Page</h1>
+            {/*<SampleForm onSaveSchool={this.handleSaveSchool}/>*/}
+            <SampleList />
+        </>
         )
     }
 }

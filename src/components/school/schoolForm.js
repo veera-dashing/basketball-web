@@ -1,12 +1,12 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import { schoolInitialValues, SchoolSchema } from "./constants";
+import { schoolInitialValues, schoolValidationSchema } from "./constants";
 import { RenderInputField, RenderRadioButton } from "../ui/FormElement";
 
 export const SchoolForm = ({ onSaveSchool }) => {
     const formik = useFormik({
         initialValues: schoolInitialValues,
-        validationSchema: SchoolSchema,
+        validationSchema: schoolValidationSchema,
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
             onSaveSchool(values);

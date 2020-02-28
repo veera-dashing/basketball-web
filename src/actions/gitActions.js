@@ -1,6 +1,6 @@
-import {call, put} from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 
-import {gitApi} from '../setup/configureAxios';
+import { gitApi } from '../setup/configureAxios';
 import * as TYPES from '../constants/actionTypes';
 import * as URLS from '../constants/apiConstants';
 
@@ -23,7 +23,7 @@ export const fetchGitUsersRequest = (onSuccess, onFailure) => ({
  */
 // Step 4: Action which calls backend
 export function* fetchGitUsers(action) {
-    const {onSuccess, onFailure} = action;
+    const { onSuccess, onFailure } = action;
     try {
         const response = yield call(gitApi.get, URLS.FETCH_GIT_USERS_URL);
 
@@ -59,9 +59,9 @@ export const fetchGitUserDetailsRequest = (id, onSuccess, onFailure) => ({
  */
 // Step 4: Action which calls backend
 export function* fetchGitUserDetails(action) {
-    const {id, onSuccess, onFailure} = action;
+    const { id, onSuccess, onFailure } = action;
     try {
-        const response = yield call(gitApi.get, URLS.FETCH_GIT_USER_DETAILS_URL+ id);
+        const response = yield call(gitApi.get, URLS.FETCH_GIT_USER_DETAILS_URL + id);
         // Step 4.2: Success scenario
         onSuccess(response);
     } catch (error) {

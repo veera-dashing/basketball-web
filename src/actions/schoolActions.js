@@ -1,7 +1,6 @@
 import { normalize } from 'normalizr';
 import { call, put, select } from 'redux-saga/effects';
 
-import * as SCHEMAS from 'constants/schemas';
 import * as TYPES from 'constants/actionTypes';
 import * as URLS from 'constants/apiConstants';
 import { coreApi } from 'setup/configureAxios';
@@ -29,15 +28,9 @@ export function* fetchSchools(action) {
     try {
         const url = computePaginationURL(URLS.FETCH_SCHOOLS_URL, params);
         const response = yield call(coreApi.get, url);
-        const meta = computePaginationMeta(
-            response.data.totalCount,
-            `/schools`
-        );
-
         yield put({
             type: TYPES.FETCH_SCHOOLS_SUCCESS,
-            payload: response.data,
-            meta
+            payload: response.data.data
         });
         onSuccess(response);
     } catch (error) {
@@ -204,26 +197,9 @@ export function* fetchUsers(action) {
     try {
         const url = computePaginationURL(URLS.FETCH_USERS_URL, params);
         const response = yield call(coreApi.get, url);
-
-        const meta = computePaginationMeta(
-            response.data.totalCount,
-            `/users`
-        );
-        const { entities, result } = normalize(response.data.data, [
-            SCHEMAS.user
-        ]);
-
-        yield put({
-            type: TYPES.FETCH_USERS_SUCCESS,
-            entities,
-            result,
-            meta
-        });
+        onSuccess(response.data);
     } catch (error) {
-        yield put({
-            type: TYPES.FETCH_USERS_ERROR,
-            error
-        });
+        onFailure(error);
     }
 }
 

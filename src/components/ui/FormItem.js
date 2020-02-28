@@ -3,8 +3,8 @@ import ReactSearchBox from 'react-search-box'
 import Select from 'react-select'
 
 export const FormItem = (props => {
-    const {label, ...inputProps} = props;
-    const {errors, touched} = props.formik;
+    const { label, ...inputProps } = props;
+    const { errors, touched } = props.formik;
     return (
         <div>
             {label && <label>{label}</label>}
@@ -16,7 +16,7 @@ export const FormItem = (props => {
     );
 });
 
-function extractInputProps({formik, options, ...otherProps}, option) {
+function extractInputProps({ formik, options, ...otherProps }, option) {
     const props = {
         value: formik.values[otherProps.name],
         onChange: formik.handleChange,
@@ -67,7 +67,6 @@ const FormInput = props => {
 
 const TextInput = props => <input {...extractInputProps(props)} />
 const TextAreaInput = props => <textarea {...extractInputProps(props)} />
-
 const SelectInput = props => (
     <select {...extractInputProps(props)}>
         <option value="">Select a value</option>
@@ -75,14 +74,13 @@ const SelectInput = props => (
             <option key={o.value} value={o.value}>{o.label || o.value}</option>)}
     </select>
 );
-
 const SearchBox = (props) => (
     <ReactSearchBox
         {...extractInputProps(props)}
     />
 )
 const SearchList = (props) => (
-    <Select {...extractInputProps(props)}  />
+    <Select {...extractInputProps(props)} />
 )
 const CheckInput = props => (
     <>

@@ -1,10 +1,10 @@
 import React from "react";
 
-const RenderErrorMsg = ({name, formik}) => {
+const RenderErrorMsg = ({ name, formik }) => {
     return (formik.touched && formik.errors[name]) ?
         <div className="form-field-error">{formik.errors[name]}</div> : <></>
 }
-export const RenderInputField = ({name, label, type, formik,...props}) => {
+export const RenderInputField = ({ name, label, type, formik, ...props }) => {
     return (<>
         <label className="form-field" htmlFor={name}>
             <span>{label}:</span>
@@ -19,12 +19,12 @@ export const RenderInputField = ({name, label, type, formik,...props}) => {
                 {...props}
             />
         </label>
-        <RenderErrorMsg name={name} formik={formik}/>
+        <RenderErrorMsg name={name} formik={formik} />
     </>)
 }
 
 
-export const RenderRadioButton = ({label, name, formik, ...props}) => {
+export const RenderRadioButton = ({ label, name, formik, ...props }) => {
 
     return (<>
         <label className="form-field" htmlFor={name}>
