@@ -10,7 +10,7 @@ export const SchoolsListItem = ({ school }) => {
     }
 
     const onEditSchool = (id) => {
-        history.push(`/schools/${id}/CreateEdit`);
+        history.push(`/schools/${id}/AddEdit`);
     }
 
     return (

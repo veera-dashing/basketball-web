@@ -9,6 +9,11 @@ import {
     addSchool,
     updateSchool,
     deleteSchool,
+    fetchSchoolUsers,
+    fetchSchoolUser,
+    addSchoolUser,
+    updateSchoolUser,
+    deleteSchoolUser
 } from "../actions/schoolActions";
 
 import { takeLatest } from "@redux-saga/core/effects";
@@ -24,4 +29,10 @@ export function* rootSaga() {
     yield takeLatest(TYPES.ADD_SCHOOL_REQUEST, addSchool);
     yield takeLatest(TYPES.UPDATE_SCHOOL_REQUEST, updateSchool);
     yield takeLatest(TYPES.DELETE_SCHOOL_REQUEST, deleteSchool);
+
+    yield takeLatest(TYPES.FETCH_SCHOOL_USERS_REQUEST, fetchSchoolUsers);
+    yield takeLatest(TYPES.FETCH_SCHOOL_USER_REQUEST, fetchSchoolUser);
+    yield takeLatest(TYPES.ADD_SCHOOL_USER_REQUEST, addSchoolUser);
+    yield takeLatest(TYPES.UPDATE_SCHOOL_USER_REQUEST, updateSchoolUser);
+    yield takeLatest(TYPES.DELETE_SCHOOL_USER_REQUEST, deleteSchoolUser);
 }

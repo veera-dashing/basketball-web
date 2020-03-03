@@ -91,7 +91,6 @@ export const addSchoolRequest = (values, onSuccess, onFailure) => ({
  */
 export function* addSchool(action) {
     const { values, onSuccess, onFailure } = action;
-
     try {
         const response = yield call(
             coreApi.post,
@@ -128,7 +127,6 @@ export const updateSchoolRequest = (
  */
 export function* updateSchool(action) {
     const { schoolID, values, onSuccess, onFailure } = action;
-
     try {
         const response = yield call(
             coreApi.post,
@@ -163,13 +161,11 @@ export const deleteSchoolRequest = (
  * @param action action type
  */
 export function* deleteSchool(action) {
-    const { schoolID, values, onSuccess, onFailure } = action;
-
+    const { schoolID, onSuccess, onFailure } = action;
     try {
         const response = yield call(
-            coreApi.put,
+            coreApi.delete,
             URLS.DELETE_SCHOOL_URL.replace(':schoolID', schoolID),
-            values
         );
         onSuccess(response.data);
     } catch (error) {
@@ -179,26 +175,28 @@ export function* deleteSchool(action) {
 
 /*
 |--------------------------------------------------------------------------
-| Fetch Users
+| Fetch School Users
 |--------------------------------------------------------------------------
 */
-export const fetchUsersRequest = (params, onSuccess, onFailure) => ({
-    type: TYPES.FETCH_USERS_REQUEST,
+export const fetchSchoolUsersRequest = (schoolID, params, onSuccess, onFailure) => ({
+    type: TYPES.FETCH_SCHOOL_USERS_REQUEST,
+    schoolID,
     params,
     onSuccess,
     onFailure
 });
 
 /**
- * fetch Users
+ * fetch School Users
  *
  * @param action action type
  */
-export function* fetchUsers(action) {
-    const { params, onSuccess, onFailure } = action;
-
+export function* fetchSchoolUsers(action) {
+    const { schoolID, params, onSuccess, onFailure } = action;
     try {
-        const url = computePaginationURL(URLS.FETCH_USERS_URL, params);
+        const url = computePaginationURL(
+            URLS.FETCH_SCHOOL_USERS_URL.replace(':schoolID', schoolID),
+            params);
         const response = yield call(coreApi.get, url);
         onSuccess(response.data);
     } catch (error) {
@@ -208,11 +206,12 @@ export function* fetchUsers(action) {
 
 /*
 |--------------------------------------------------------------------------
-| Fetch User
+| Fetch School User
 |--------------------------------------------------------------------------
 */
-export const fetchUserRequest = (userID, onSuccess, onFailure) => ({
-    type: TYPES.FETCH_USER_REQUEST,
+export const fetchSchoolUserRequest = (schoolID, userID, onSuccess, onFailure) => ({
+    type: TYPES.FETCH_SCHOOL_USER_REQUEST,
+    schoolID,
     userID,
     onSuccess,
     onFailure
@@ -223,12 +222,12 @@ export const fetchUserRequest = (userID, onSuccess, onFailure) => ({
  *
  * @param action action type
  */
-export function* fetchUser(action) {
-    const { userID, onSuccess, onFailure } = action;
+export function* fetchSchoolUser(action) {
+    const { schoolID, userID, onSuccess, onFailure } = action;
     try {
         const response = yield call(
             coreApi.get,
-            URLS.FETCH_USER_URL.replace(':userID', userID)
+            URLS.FETCH_SCHOOL_USER_URL.replace(':schoolID', schoolID).replace(':userID', userID)
         );
         onSuccess(response.data);
     } catch (error) {
@@ -238,26 +237,29 @@ export function* fetchUser(action) {
 
 /*
 |--------------------------------------------------------------------------
-| Add User
+| Add School User
 |--------------------------------------------------------------------------
 */
-export const addUserRequest = (values, onSuccess, onFailure) => ({
-    type: TYPES.ADD_USER_REQUEST,
+export const addSchoolUserRequest = (schoolID, values, onSuccess, onFailure) => ({
+    type: TYPES.ADD_SCHOOL_USER_REQUEST,
+    schoolID,
     values,
     onSuccess,
     onFailure
 });
 
 /**
- * add User
+ * add School User
  *
  * @param action action type
  */
-export function* addUser(action) {
-    const { values, onSuccess, onFailure } = action;
-
+export function* addSchoolUser(action) {
+    const { schoolID, values, onSuccess, onFailure } = action;
     try {
-        const response = yield call(coreApi.post, URLS.ADD_USER_URL, values);
+        const response = yield call(
+            coreApi.post,
+            URLS.ADD_SCHOOL_USER_URL.replace(':schoolID', schoolID),
+            values);
         onSuccess(response.data);
     } catch (error) {
         onFailure(error);
@@ -266,16 +268,18 @@ export function* addUser(action) {
 
 /*
 |--------------------------------------------------------------------------
-| Update User
+| Update School User
 |--------------------------------------------------------------------------
 */
-export const updateUserRequest = (
+export const updateSchoolUserRequest = (
+    schoolID,
     userID,
     values,
     onSuccess,
     onFailure
 ) => ({
-    type: TYPES.UPDATE_USER_REQUEST,
+    type: TYPES.UPDATE_SCHOOL_USER_REQUEST,
+    schoolID,
     userID,
     values,
     onSuccess,
@@ -283,17 +287,16 @@ export const updateUserRequest = (
 });
 
 /**
- * update User
+ * update School User
  *
  * @param action action type
  */
-export function* updateUser(action) {
-    const { userID, values, onSuccess, onFailure } = action;
-
+export function* updateSchoolUser(action) {
+    const { schoolID, userID, values, onSuccess, onFailure } = action;
     try {
         const response = yield call(
             coreApi.put,
-            URLS.UPDATE_USER_URL.replace(':userID', userID),
+            URLS.UPDATE_SCHOOL_USER_URL.replace(':schoolID', schoolID).replace(':userID', userID),
             values
         );
         onSuccess(response.data);
@@ -304,33 +307,33 @@ export function* updateUser(action) {
 
 /*
 |--------------------------------------------------------------------------
-| Delete User
+| Delete School User
 |--------------------------------------------------------------------------
 */
-export const deleteUserRequest = (
+export const deleteSchoolUserRequest = (
+    schoolID,
     userID,
     onSuccess,
     onFailure
 ) => ({
-    type: TYPES.DELETE_USER_REQUEST,
+    type: TYPES.DELETE_SCHOOL_USER_REQUEST,
+    schoolID,
     userID,
     onSuccess,
     onFailure
 });
 
 /**
- * delete User
+ * delete School User
  *
  * @param action action type
  */
-export function* deleteUser(action) {
-    const { userID, values, onSuccess, onFailure } = action;
-
+export function* deleteSchoolUser(action) {
+    const { schoolID, userID, onSuccess, onFailure } = action;
     try {
         const response = yield call(
-            coreApi.put,
-            URLS.DELETE_USER_URL.replace(':userID', userID),
-            values
+            coreApi.delete,
+            URLS.DELETE_SCHOOL_USER_URL.replace(':schoolID', schoolID).replace(':userID', userID),
         );
         onSuccess(response.data);
     } catch (error) {

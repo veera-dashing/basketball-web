@@ -3,67 +3,66 @@ import { useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 
-import { schoolValidationSchema } from './constants';
+import { schoolUserValidationSchema } from './constants';
 import { RenderInputField } from '../ui/FormElement';
 import {
-    fetchSchoolRequest,
-    addSchoolRequest,
-    updateSchoolRequest
+    fetchSchoolUserRequest,
+    addSchoolUserRequest,
+    updateSchoolUserRequest
 } from '../../actions/schoolActions';
 
-export const SchoolForm = ({ id }) => {
+export const SchoolUserForm = ({ schoolID, id }) => {
     const dispatch = useDispatch();
     let history = useHistory();
 
-    const [currentSchool, setCurrentSchool] = useState({
+    const [currentUser, setCurrentUser] = useState({
         name: '',
         email: '',
-        address: '',
         contactNumber: ''
     });
-    console.log('currentSchool: ' + currentSchool);
+    console.log('currentUser: ' + currentUser);
 
     useEffect(() => {
         if (id != 0) {
             const onSuccess = (response) => {
-                setCurrentSchool(response.data.data);
+                setCurrentUser(response.data.data);
             }
             const onError = (error) => {
-                console.log('Error in fetchSchool: ', error);
+                console.log('Error in fetchSchoolUser: ', error);
             }
-            dispatch(fetchSchoolRequest(id, onSuccess, onError));
+            dispatch(fetchSchoolUserRequest(id, onSuccess, onError));
         }
     }, []);
 
-    const onSaveSchool = (data) => {
+    const onSaveUser = (data) => {
         if (!data.id) {
             const onSuccess = (response) => {
-                history.push(`/schools`);
+                history.push(`/schools/${schoolID}/users`);
             }
             const onError = (error) => {
-                console.log('Error in addSchool: ', error);
-                history.push(`/schools`);
+                console.log('Error in addSchoolUser: ', error);
+                history.push(`/schools/${schoolID}/users`);
             }
-            dispatch(addSchoolRequest(data, onSuccess, onError));
+            dispatch(addSchoolUserRequest(schoolID, data, onSuccess, onError));
         } else {
             const onSuccess = (response) => {
-                history.push(`/schools`);
+                history.push(`/schools/${schoolID}/users`);
             }
             const onError = (error) => {
-                console.log('Error in updateSchool: ', error);
-                history.push(`/schools`);
+                console.log('Error in updateSchoolUser: ', error);
+                history.push(`/schools/${schoolID}/users`);
             }
-            dispatch(updateSchoolRequest(data.id, data, onSuccess, onError));
+            dispatch(updateSchoolUserRequest(schoolID, data.id, data, onSuccess, onError));
         }
     }
 
     const formik = useFormik({
         enableReinitialize: true,
-        initialValues: currentSchool,
-        validationSchema: schoolValidationSchema,
+        initialValues: currentUser,
+        validationSchema: schoolUserValidationSchema,
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
-            onSaveSchool(values);
+            onSaveUser(values);
         },
     });
 

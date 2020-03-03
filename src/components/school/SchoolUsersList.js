@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 
-import { SchoolsListHeader } from './SchoolsListHeader';
-import { SchoolsListItem } from './SchoolsListItem';
-import { fetchSchoolsRequest } from "../../actions/schoolActions";
+import { SchoolUsersListHeader } from './SchoolUsersListHeader';
+import { SchoolUsersListItem } from './SchoolUsersListItem';
+import { fetchSchoolUsersRequest } from "../../actions/schoolActions";
 import { getQueryParams } from '../../utilities/helpers';
 
-export const SchoolsList = () => {
+export const SchoolUsersList = () => {
 
     const dispatch = useDispatch();
 
@@ -23,17 +23,17 @@ export const SchoolsList = () => {
                 console.log('Error in fetchSchools: ', error);
             }
             const params = getQueryParams(window.location.href);
-            dispatch(fetchSchoolsRequest(params, onSuccess, onError));
+            dispatch(fetchSchoolUsersRequest(params, onSuccess, onError));
         }
     }, []);
 
     return (
         <>{schools &&
             <table width={'100%'} border={'1px'}>
-                <SchoolsListHeader />
+                <SchoolUsersListHeader />
                 {
                     schools.map((school) => {
-                        return (<SchoolsListItem school={school} />)
+                        return (<SchoolUsersListItem school={school} />)
                     })
                 }
             </table>

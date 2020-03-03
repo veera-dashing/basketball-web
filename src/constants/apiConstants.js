@@ -10,8 +10,8 @@ export const ADD_SCHOOL_URL = '/schools';
 export const UPDATE_SCHOOL_URL = '/schools/:schoolID';
 export const DELETE_SCHOOL_URL = '/schools/:schoolID';
 
-export const FETCH_USERS_URL = '/users';
-export const FETCH_USER_URL = '/users/:userID';
-export const ADD_USER_URL = '/users';
-export const UPDATE_USER_URL = '/users/:userID';
-export const DELETE_USER_URL = '/users/:userID';
+export const FETCH_SCHOOL_USERS_URL = '/schools/:schoolID/users';
+export const FETCH_SCHOOL_USER_URL = '/schools/:schoolID/users/:userID';
+export const ADD_SCHOOL_USER_URL = '/schools/:schoolID/users';
+export const UPDATE_SCHOOL_USER_URL = '/schools/:schoolID/users/:userID';
+export const DELETE_SCHOOL_USER_URL = '/schools/:schoolID/users/:userID';
