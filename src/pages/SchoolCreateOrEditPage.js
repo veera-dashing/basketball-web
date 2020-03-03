@@ -1,17 +1,15 @@
 import React from 'react';
-import { SchoolForm } from "../components/school/schoolForm";
+import { SchoolForm } from "../components/school/SchoolForm";
 
 class SchoolCreateOrEditPage extends React.Component {
 
-    handleSaveSchool = (values) => {
-        console.log('values from form ', values);
-    }
-
     render() {
+        const { id } = this.props.match.params;
+        const title = (id == 0) ? 'Create School' : 'Edit School';
         return (
             <>
-                <h1> School Create or Edit Page</h1>
-                <SchoolForm onSaveSchool={this.handleSaveSchool} />
+                <h1>{title}</h1>
+                <SchoolForm id={id} />
             </>
         )
     }

@@ -46,8 +46,8 @@ function App() {
                         <Route path="/git/" exact component={GitUsers} />
                         <Route path="/git/:id" exact component={GitUserDetails} />
                         <Route path="/schools" component={SchoolsPage} />
-                        <Route path="/schools/:schoolID/CreateEdit" component={SchoolCreateOrEditPage} />
-                        <Route path="/schools/:schoolID/Manage" component={SchoolMgmtPage} />
+                        <Route path="/schools/:id/CreateEdit" component={SchoolCreateOrEditPage} />
+                        <Route path="/schools/:id/Manage" component={SchoolMgmtPage} />
                         <Route path="/sample" component={SamplePage} />
                     </ProvideAuth>
 

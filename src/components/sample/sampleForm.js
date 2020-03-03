@@ -1,10 +1,10 @@
 import React from 'react';
-import {useFormik} from 'formik';
+import { useFormik } from 'formik';
 
-import {FormItem} from '../ui/FormItem'
-import {sampleFormInitialValues, SampleFormSchema} from "./constants";
+import { FormItem } from '../ui/FormItem'
+import { sampleFormInitialValues, SampleFormSchema } from "./constants";
 
-export const SampleForm = ({onSaveSchool}) => {
+export const SampleForm = ({ onSaveSchool }) => {
     const formik = useFormik({
         initialValues: sampleFormInitialValues,
         validationSchema: SampleFormSchema,
@@ -15,7 +15,9 @@ export const SampleForm = ({onSaveSchool}) => {
     });
     return (
         <form onSubmit={formik.handleSubmit}>
-            {console.log('errors.......', formik.errors, 'values-----', formik.values)}
+            {
+                console.log('errors.......', formik.errors, 'values-----', formik.values)
+            }
             <FormItem
                 type="text"
                 label="Full Name"
@@ -33,8 +35,8 @@ export const SampleForm = ({onSaveSchool}) => {
                 label="Default Currency"
                 name="defaultCurrency"
                 options={[
-                    {value: 'USD', label: 'American Dollar'},
-                    {value: 'EUR', label: 'Euro'}
+                    { value: 'USD', label: 'American Dollar' },
+                    { value: 'EUR', label: 'Euro' }
                 ]}
                 formik={formik}
             />
@@ -43,8 +45,8 @@ export const SampleForm = ({onSaveSchool}) => {
                 label="Default Currency"
                 name="defaultCurrencySearch"
                 options={[
-                    {value: 'USD', label: 'American Dollar'},
-                    {value: 'EUR', label: 'Euro'}
+                    { value: 'USD', label: 'American Dollar' },
+                    { value: 'EUR', label: 'Euro' }
                 ]}
                 formik={formik}
             />
@@ -54,8 +56,8 @@ export const SampleForm = ({onSaveSchool}) => {
                 name="defaultCurrencyMultiSearch"
                 isMulti={true}
                 options={[
-                    {value: 'USD', label: 'American Dollar'},
-                    {value: 'EUR', label: 'Euro'}
+                    { value: 'USD', label: 'American Dollar' },
+                    { value: 'EUR', label: 'Euro' }
                 ]}
                 formik={formik}
             />
@@ -64,9 +66,9 @@ export const SampleForm = ({onSaveSchool}) => {
                 label="Gender"
                 name="gender"
                 options={[
-                    {value: 'male', label: 'Male'},
-                    {value: 'female', label: 'Female'},
-                    {value: 'other', label: 'Other'}
+                    { value: 'male', label: 'Male' },
+                    { value: 'female', label: 'Female' },
+                    { value: 'other', label: 'Other' }
                 ]}
                 formik={formik}
             />
@@ -75,8 +77,8 @@ export const SampleForm = ({onSaveSchool}) => {
                 label="Hobbies"
                 name="hobbies"
                 options={[
-                    {value: 'baking', label: 'Baking'},
-                    {value: 'dance', label: 'Dance'}
+                    { value: 'baking', label: 'Baking' },
+                    { value: 'dance', label: 'Dance' }
                 ]}
                 formik={formik}
             />

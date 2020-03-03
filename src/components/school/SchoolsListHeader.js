@@ -1,11 +1,12 @@
 import React from 'react';
 
-export const SchoolsListHeader = ({ school }) => {
-    console.log('school----------', school);
+export const SchoolsListHeader = () => {
     return (
         <>
             <tr>
-                <td> Id</td>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Actions</td>
             </tr>
         </>
     )

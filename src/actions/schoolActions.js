@@ -93,7 +93,10 @@ export function* addSchool(action) {
     const { values, onSuccess, onFailure } = action;
 
     try {
-        const response = yield call(coreApi.post, URLS.ADD_SCHOOL_URL, values);
+        const response = yield call(
+            coreApi.post,
+            URLS.ADD_SCHOOL_URL,
+            values);
         onSuccess(response.data);
     } catch (error) {
         onFailure(error);
@@ -128,7 +131,7 @@ export function* updateSchool(action) {
 
     try {
         const response = yield call(
-            coreApi.put,
+            coreApi.post,
             URLS.UPDATE_SCHOOL_URL.replace(':schoolID', schoolID),
             values
         );

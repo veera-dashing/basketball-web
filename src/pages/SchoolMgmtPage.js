@@ -4,7 +4,7 @@ class SchoolMgmtPage extends React.Component {
 
     render() {
         return (<>
-            <h1> School Management Page</h1>
+            <h1> School Management</h1>
 
         </>
         )

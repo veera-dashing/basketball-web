@@ -1,16 +1,22 @@
 import React from 'react';
+
 import { SchoolsList } from '../components/school/SchoolsList';
 
 class SchoolsPage extends React.Component {
+
+    onCreateSchoolClick = () => {
+        const { history } = this.props;
+        history.push(`/schools/0/CreateEdit`);
+    }
+
     render() {
-        const { schools } = this.props;
         return (
             <>
-                <h1> This is schools listing page</h1>
-                <button key='btnAddSchool' >
-                    Add School
+                <h1> Schools</h1>
+                <button key='btnCreateSchool' onClick={this.onCreateSchoolClick} >
+                    Create School
                 </button>
-                <SchoolsList schools={schools} />
+                <SchoolsList />
             </>
         )
     }
