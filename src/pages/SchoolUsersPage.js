@@ -4,19 +4,21 @@ import { SchoolUsersList } from '../components/school/SchoolUsersList';
 
 class SchoolUsersPage extends React.Component {
 
-    onAddSchoolUserClick = (schoolID) => {
+    onAddSchoolUserClick = () => {
         const { history } = this.props;
+        const { schoolID } = this.props.match.params;
         history.push(`/schools/${schoolID}/users/0/AddEdit`);
     }
 
     render() {
+        const { schoolID } = this.props.match.params;
         return (
             <>
-                <h1> Schools</h1>
+                <h1> Users</h1>
                 <button key='btnAddSchoolUser' onClick={this.onAddSchoolUserClick} >
                     Add User
                 </button>
-                <SchoolUsersList />
+                <SchoolUsersList schoolID={schoolID} />
             </>
         )
     }

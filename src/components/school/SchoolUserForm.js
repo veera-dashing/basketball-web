@@ -11,30 +11,31 @@ import {
     updateSchoolUserRequest
 } from '../../actions/schoolActions';
 
-export const SchoolUserForm = ({ schoolID, id }) => {
+export const SchoolUserForm = ({ schoolID, userID }) => {
     const dispatch = useDispatch();
     let history = useHistory();
 
     const [currentUser, setCurrentUser] = useState({
-        name: '',
+        firstName: '',
+        lastName: '',
         email: '',
         contactNumber: ''
     });
     console.log('currentUser: ' + currentUser);
 
     useEffect(() => {
-        if (id != 0) {
+        if (userID != 0) {
             const onSuccess = (response) => {
-                setCurrentUser(response.data.data);
+                setCurrentUser(response.data);
             }
             const onError = (error) => {
                 console.log('Error in fetchSchoolUser: ', error);
             }
-            dispatch(fetchSchoolUserRequest(id, onSuccess, onError));
+            dispatch(fetchSchoolUserRequest(schoolID, userID, onSuccess, onError));
         }
     }, []);
 
-    const onSaveUser = (data) => {
+    const onSaveSchoolUser = (data) => {
         if (!data.id) {
             const onSuccess = (response) => {
                 history.push(`/schools/${schoolID}/users`);
@@ -62,15 +63,15 @@ export const SchoolUserForm = ({ schoolID, id }) => {
         validationSchema: schoolUserValidationSchema,
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
-            onSaveUser(values);
+            onSaveSchoolUser(values);
         },
     });
 
     return (
         <form onSubmit={formik.handleSubmit}>
-            <RenderInputField name={'name'} label={'Name'} formik={formik} />
+            <RenderInputField name={'firstName'} label={'First Name'} formik={formik} />
+            <RenderInputField name={'lastName'} label={'Last Name'} formik={formik} />
             <RenderInputField name={'email'} label={'Email'} type='email' formik={formik} />
-            <RenderInputField name={'address'} label={'Address'} formik={formik} />
             <RenderInputField name={'contactNumber'} label={'Contact Number'} formik={formik} />
             <button type="submit">Submit</button>
         </form>

@@ -6,34 +6,30 @@ import { SchoolUsersListItem } from './SchoolUsersListItem';
 import { fetchSchoolUsersRequest } from "../../actions/schoolActions";
 import { getQueryParams } from '../../utilities/helpers';
 
-export const SchoolUsersList = () => {
+export const SchoolUsersList = ({ schoolID }) => {
 
     const dispatch = useDispatch();
-
-    const schools = useSelector(state => state.schoolState.schools);
-    console.log('schools: ', schools);
+    const [schoolUsers, setSchoolUsers] = useState();
 
     //Executes on Page load
     useEffect(() => {
-        if (!schools || schools.length == 0) {
-            const onSuccess = (response) => {
-
-            }
-            const onError = (error) => {
-                console.log('Error in fetchSchools: ', error);
-            }
-            const params = getQueryParams(window.location.href);
-            dispatch(fetchSchoolUsersRequest(params, onSuccess, onError));
+        const onSuccess = (response) => {
+            setSchoolUsers(response.data)
         }
+        const onError = (error) => {
+            console.log('Error in fetchSchools: ', error);
+        }
+        const params = getQueryParams(window.location.href);
+        dispatch(fetchSchoolUsersRequest(schoolID, params, onSuccess, onError));
     }, []);
 
     return (
-        <>{schools &&
+        <>{schoolUsers &&
             <table width={'100%'} border={'1px'}>
                 <SchoolUsersListHeader />
                 {
-                    schools.map((school) => {
-                        return (<SchoolUsersListItem school={school} />)
+                    schoolUsers.map((schoolUser) => {
+                        return (<SchoolUsersListItem schoolID={schoolID} schoolUser={schoolUser} />)
                     })
                 }
             </table>

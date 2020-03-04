@@ -1,25 +1,25 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-export const SchoolUsersListItem = ({ schoolID, user }) => {
+export const SchoolUsersListItem = ({ schoolID, schoolUser }) => {
 
     let history = useHistory();
 
-    const onEditSchoolUser = (schoolID, id) => {
-        history.push(`/schools/${schoolID}/users/${id}/AddEdit`);
+    const onEditSchoolUser = (schoolID, userID) => {
+        history.push(`/schools/${schoolID}/users/${userID}/AddEdit`);
     }
 
     return (
         <>
             <tr>
                 <td>
-                    <a href={""} onClick={() => onEditSchoolUser(schoolID, user.id)}>{user.id}</a>
+                    <a href={""} onClick={() => onEditSchoolUser(schoolID, schoolUser.id)}>{schoolUser.id}</a>
                 </td>
                 <td>
-                    {user.name}
+                    {schoolUser.firstName}
                 </td>
                 <td>
-                    <button key='btnAddSchool' onClick={() => onEditSchoolUser(schoolID, user.id)} >
+                    <button key='btnAddSchool' onClick={() => onEditSchoolUser(schoolID, schoolUser.id)} >
                         Edit User
                     </button>
                 </td>

@@ -62,7 +62,7 @@ export const SchoolForm = ({ id }) => {
         initialValues: currentSchool,
         validationSchema: schoolValidationSchema,
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+            //alert(JSON.stringify(values, null, 2));
             onSaveSchool(values);
         },
     });

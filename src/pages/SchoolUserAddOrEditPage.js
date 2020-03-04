@@ -9,7 +9,7 @@ class SchoolUserAddOrEditPage extends React.Component {
         return (
             <>
                 <h1>{title}</h1>
-                <SchoolUserForm schoolID={schoolID} id={userID} />
+                <SchoolUserForm schoolID={schoolID} userID={userID} />
             </>
         )
     }
