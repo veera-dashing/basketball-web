@@ -7,13 +7,19 @@ import { Dashboard } from './components/dashboard/dashboard';
 import GitUsers from './pages/GitUsers';
 import { UserIsAuthenticated } from "./setup/ProtectedRoute";
 import { Root } from "./setup/Root";
+import SamplePage from "./pages/SamplePage";
+import { GitUserDetails } from './components/git/GitUsersDetails';
 import SchoolsPage from './pages/SchoolsPage';
 import SchoolAddOrEditPage from './pages/SchoolAddOrEditPage';
 import SchoolMgmtPage from './pages/SchoolMgmtPage';
 import SchoolUsersPage from './pages/SchoolUsersPage';
 import SchoolUserAddOrEditPage from './pages/SchoolUserAddOrEditPage';
-import SamplePage from "./pages/SamplePage";
-import { GitUserDetails } from './components/git/GitUsersDetails';
+import TournamentsPage from './pages/TournamentsPage';
+import TournamentAddOrEditPage from './pages/TournamentAddOrEditPage';
+import TournamentMgmtPage from './pages/TournamentMgmtPage';
+import TournamentMatchesPage from './pages/TournamentMatchesPage';
+import TournamentMatchAddOrEditPage from './pages/TournamentMatchAddOrEditPage';
+
 
 function App() {
     return (
@@ -36,6 +42,9 @@ function App() {
                         <Link to="/schools/">Schools</Link>
                     </li>
                     <li>
+                        <Link to="/tournaments/">Tournaments</Link>
+                    </li>
+                    <li>
                         <Link to="/sample/">Sample Form</Link>
                     </li>
                 </ul>
@@ -52,6 +61,11 @@ function App() {
                         <Route path="/schools/:schoolID/manage" component={SchoolMgmtPage} />
                         <Route path="/schools/:schoolID/users/" component={SchoolUsersPage} />
                         <Route path="/schools/:schoolID/users/:userID/AddEdit" component={SchoolUserAddOrEditPage} />
+                        <Route path="/tournaments" component={TournamentsPage} />
+                        <Route path="/tournaments/:tournamentID/AddEdit" component={TournamentAddOrEditPage} />
+                        <Route path="/tournaments/:tournamentID/manage" component={TournamentMgmtPage} />
+                        <Route path="/tournaments/:tournamentID/matches/" component={TournamentMatchesPage} />
+                        <Route path="/tournaments/:tournamentID/matches/:matchID/AddEdit" component={TournamentMatchAddOrEditPage} />
                         <Route path="/sample" component={SamplePage} />
                     </ProvideAuth>
 

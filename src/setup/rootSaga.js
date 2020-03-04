@@ -13,8 +13,20 @@ import {
     fetchSchoolUser,
     addSchoolUser,
     updateSchoolUser,
-    deleteSchoolUser
+    deleteSchoolUser,
 } from "../actions/schoolActions";
+import {
+    fetchTournaments,
+    fetchTournament,
+    addTournament,
+    updateTournament,
+    deleteTournament,
+    fetchTournamentMatches,
+    fetchTournamentMatch,
+    addTournamentMatch,
+    updateTournamentMatch,
+    deleteTournamentMatch,
+} from "../actions/tournamentActions";
 
 import { takeLatest } from "@redux-saga/core/effects";
 
@@ -29,10 +41,20 @@ export function* rootSaga() {
     yield takeLatest(TYPES.ADD_SCHOOL_REQUEST, addSchool);
     yield takeLatest(TYPES.UPDATE_SCHOOL_REQUEST, updateSchool);
     yield takeLatest(TYPES.DELETE_SCHOOL_REQUEST, deleteSchool);
-
     yield takeLatest(TYPES.FETCH_SCHOOL_USERS_REQUEST, fetchSchoolUsers);
     yield takeLatest(TYPES.FETCH_SCHOOL_USER_REQUEST, fetchSchoolUser);
     yield takeLatest(TYPES.ADD_SCHOOL_USER_REQUEST, addSchoolUser);
     yield takeLatest(TYPES.UPDATE_SCHOOL_USER_REQUEST, updateSchoolUser);
     yield takeLatest(TYPES.DELETE_SCHOOL_USER_REQUEST, deleteSchoolUser);
+
+    yield takeLatest(TYPES.FETCH_TOURNAMENTS_REQUEST, fetchTournaments);
+    yield takeLatest(TYPES.FETCH_TOURNAMENT_REQUEST, fetchTournament);
+    yield takeLatest(TYPES.ADD_TOURNAMENT_REQUEST, addTournament);
+    yield takeLatest(TYPES.UPDATE_TOURNAMENT_REQUEST, updateTournament);
+    yield takeLatest(TYPES.DELETE_TOURNAMENT_REQUEST, deleteTournament);
+    yield takeLatest(TYPES.FETCH_TOURNAMENT_MATCHES_REQUEST, fetchTournamentMatches);
+    yield takeLatest(TYPES.FETCH_TOURNAMENT_MATCH_REQUEST, fetchTournamentMatch);
+    yield takeLatest(TYPES.ADD_TOURNAMENT_MATCH_REQUEST, addTournamentMatch);
+    yield takeLatest(TYPES.UPDATE_TOURNAMENT_MATCH_REQUEST, updateTournamentMatch);
+    yield takeLatest(TYPES.DELETE_TOURNAMENT_MATCH_REQUEST, deleteTournamentMatch);
 }
