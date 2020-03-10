@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { SchoolUsersListHeader } from './SchoolUsersListHeader';
 import { SchoolUsersListItem } from './SchoolUsersListItem';
@@ -9,6 +10,7 @@ import { getQueryParams } from '../../utilities/helpers';
 export const SchoolUsersList = ({ schoolID }) => {
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const [schoolUsers, setSchoolUsers] = useState();
 
     //Executes on Page load
@@ -23,17 +25,25 @@ export const SchoolUsersList = ({ schoolID }) => {
         dispatch(fetchSchoolUsersRequest(schoolID, params, onSuccess, onError));
     }, []);
 
+    const onAddSchoolUserClick = () => {
+        history.push(`/schools/${schoolID}/users/0/AddEdit`);
+    }
+
     return (
-        <>{schoolUsers &&
-            <table width={'100%'} border={'1px'}>
-                <SchoolUsersListHeader />
-                {
-                    schoolUsers.map((schoolUser) => {
-                        return (<SchoolUsersListItem schoolID={schoolID} schoolUser={schoolUser} />)
-                    })
-                }
-            </table>
-        }
+        <>
+            <button key='btnAddSchoolUser' onClick={() => onAddSchoolUserClick()} >
+                Add User
+            </button>
+            {schoolUsers &&
+                <table width={'100%'} border={'1px'}>
+                    <SchoolUsersListHeader />
+                    {
+                        schoolUsers.map((schoolUser) => {
+                            return (<SchoolUsersListItem schoolID={schoolID} schoolUser={schoolUser} />)
+                        })
+                    }
+                </table>
+            }
         </>
     )
 }

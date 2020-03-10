@@ -47,9 +47,10 @@ export function* fetchSchools(action) {
 | Fetch School
 |--------------------------------------------------------------------------
 */
-export const fetchSchoolRequest = (schoolID, onSuccess, onFailure) => ({
+export const fetchSchoolRequest = (schoolID, params, onSuccess, onFailure) => ({
     type: TYPES.FETCH_SCHOOL_REQUEST,
     schoolID,
+    params,
     onSuccess,
     onFailure
 });
@@ -60,12 +61,14 @@ export const fetchSchoolRequest = (schoolID, onSuccess, onFailure) => ({
  * @param action action type
  */
 export function* fetchSchool(action) {
-    const { schoolID, onSuccess, onFailure } = action;
+    const { schoolID, params, onSuccess, onFailure } = action;
     try {
+        const url = computePaginationURL(
+            URLS.FETCH_SCHOOL_URL.replace(':schoolID', schoolID),
+            params);
         const response = yield call(
             coreApi.get,
-            URLS.FETCH_SCHOOL_URL.replace(':schoolID', schoolID)
-        );
+            url);
         onSuccess(response.data);
     } catch (error) {
         onFailure(error);
@@ -334,6 +337,174 @@ export function* deleteSchoolUser(action) {
         const response = yield call(
             coreApi.delete,
             URLS.DELETE_SCHOOL_USER_URL.replace(':schoolID', schoolID).replace(':userID', userID),
+        );
+        onSuccess(response.data);
+    } catch (error) {
+        onFailure(error);
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Fetch School Teams
+|--------------------------------------------------------------------------
+*/
+export const fetchSchoolTeamsRequest = (schoolID, params, onSuccess, onFailure) => ({
+    type: TYPES.FETCH_SCHOOL_TEAMS_REQUEST,
+    schoolID,
+    params,
+    onSuccess,
+    onFailure
+});
+
+/**
+ * fetch School Teams
+ *
+ * @param action action type
+ */
+export function* fetchSchoolTeams(action) {
+    const { schoolID, params, onSuccess, onFailure } = action;
+    try {
+        const url = computePaginationURL(
+            URLS.FETCH_SCHOOL_TEAMS_URL.replace(':schoolID', schoolID),
+            params);
+        const response = yield call(coreApi.get, url);
+        onSuccess(response.data);
+    } catch (error) {
+        onFailure(error);
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Fetch School Team
+|--------------------------------------------------------------------------
+*/
+export const fetchSchoolTeamRequest = (schoolID, teamID, onSuccess, onFailure) => ({
+    type: TYPES.FETCH_SCHOOL_TEAM_REQUEST,
+    schoolID,
+    teamID,
+    onSuccess,
+    onFailure
+});
+
+/**
+ * get Team
+ *
+ * @param action action type
+ */
+export function* fetchSchoolTeam(action) {
+    const { schoolID, teamID, onSuccess, onFailure } = action;
+    try {
+        const response = yield call(
+            coreApi.get,
+            URLS.FETCH_SCHOOL_TEAM_URL.replace(':schoolID', schoolID).replace(':teamID', teamID)
+        );
+        onSuccess(response.data);
+    } catch (error) {
+        onFailure(error);
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Add School Team
+|--------------------------------------------------------------------------
+*/
+export const addSchoolTeamRequest = (schoolID, values, onSuccess, onFailure) => ({
+    type: TYPES.ADD_SCHOOL_TEAM_REQUEST,
+    schoolID,
+    values,
+    onSuccess,
+    onFailure
+});
+
+/**
+ * add School Team
+ *
+ * @param action action type
+ */
+export function* addSchoolTeam(action) {
+    const { schoolID, values, onSuccess, onFailure } = action;
+    try {
+        const response = yield call(
+            coreApi.post,
+            URLS.ADD_SCHOOL_TEAM_URL.replace(':schoolID', schoolID),
+            values);
+        onSuccess(response.data);
+    } catch (error) {
+        onFailure(error);
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Update School Team
+|--------------------------------------------------------------------------
+*/
+export const updateSchoolTeamRequest = (
+    schoolID,
+    teamID,
+    values,
+    onSuccess,
+    onFailure
+) => ({
+    type: TYPES.UPDATE_SCHOOL_TEAM_REQUEST,
+    schoolID,
+    teamID,
+    values,
+    onSuccess,
+    onFailure
+});
+
+/**
+ * update School Team
+ *
+ * @param action action type
+ */
+export function* updateSchoolTeam(action) {
+    const { schoolID, teamID, values, onSuccess, onFailure } = action;
+    try {
+        const response = yield call(
+            coreApi.put,
+            URLS.UPDATE_SCHOOL_TEAM_URL.replace(':schoolID', schoolID).replace(':teamID', teamID),
+            values
+        );
+        onSuccess(response.data);
+    } catch (error) {
+        onFailure(error);
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Delete School Team
+|--------------------------------------------------------------------------
+*/
+export const deleteSchoolTeamRequest = (
+    schoolID,
+    teamID,
+    onSuccess,
+    onFailure
+) => ({
+    type: TYPES.DELETE_SCHOOL_TEAM_REQUEST,
+    schoolID,
+    teamID,
+    onSuccess,
+    onFailure
+});
+
+/**
+ * delete School Team
+ *
+ * @param action action type
+ */
+export function* deleteSchoolTeam(action) {
+    const { schoolID, teamID, onSuccess, onFailure } = action;
+    try {
+        const response = yield call(
+            coreApi.delete,
+            URLS.DELETE_SCHOOL_TEAM_URL.replace(':schoolID', schoolID).replace(':teamID', teamID),
         );
         onSuccess(response.data);
     } catch (error) {

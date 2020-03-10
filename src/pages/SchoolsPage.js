@@ -1,25 +1,25 @@
 import React from 'react';
+import { useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom';
 
 import { SchoolsList } from '../components/school/SchoolsList';
 
-class SchoolsPage extends React.Component {
+export const SchoolsPage = () => {
 
-    onAddSchoolClick = () => {
-        const { history } = this.props;
+    const dispatch = useDispatch();
+    let history = useHistory();
+
+    const onAddSchoolClick = () => {
         history.push(`/schools/0/AddEdit`);
     }
 
-    render() {
-        return (
-            <>
-                <h1> Schools</h1>
-                <button key='btnAddSchool' onClick={this.onAddSchoolClick} >
-                    Add School
+    return (
+        <>
+            <h1> Schools</h1>
+            <button key='btnAddSchool' onClick={() => onAddSchoolClick()} >
+                Add School
                 </button>
-                <SchoolsList />
-            </>
-        )
-    }
+            <SchoolsList />
+        </>
+    )
 }
-
-export default SchoolsPage;

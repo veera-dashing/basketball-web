@@ -1,5 +1,5 @@
 import React from 'react';
-import { TournamentForm } from "../components/tournament/TournamentForm";
+import { TournamentInfoForm } from "../components/tournament/TournamentInfoForm";
 
 class TournamentAddOrEditPage extends React.Component {
 
@@ -9,7 +9,7 @@ class TournamentAddOrEditPage extends React.Component {
         return (
             <>
                 <h1>{title}</h1>
-                <TournamentForm id={tournamentID} />
+                <TournamentInfoForm id={tournamentID} />
             </>
         )
     }

@@ -11,7 +11,7 @@ import {
     updateTournamentRequest
 } from '../../actions/tournamentActions';
 
-export const TournamentForm = ({ id }) => {
+export const TournamentInfoForm = ({ id }) => {
     const dispatch = useDispatch();
     let history = useHistory();
 

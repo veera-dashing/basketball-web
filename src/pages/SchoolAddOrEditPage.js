@@ -1,5 +1,5 @@
 import React from 'react';
-import { SchoolForm } from "../components/school/SchoolForm";
+import { SchoolInfoForm } from "../components/school/SchoolInfoForm";
 
 class SchoolAddOrEditPage extends React.Component {
 
@@ -9,7 +9,7 @@ class SchoolAddOrEditPage extends React.Component {
         return (
             <>
                 <h1>{title}</h1>
-                <SchoolForm id={schoolID} />
+                <SchoolInfoForm id={schoolID} />
             </>
         )
     }

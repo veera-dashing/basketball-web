@@ -9,15 +9,15 @@ import { UserIsAuthenticated } from "./setup/ProtectedRoute";
 import { Root } from "./setup/Root";
 import SamplePage from "./pages/SamplePage";
 import { GitUserDetails } from './components/git/GitUsersDetails';
-import SchoolsPage from './pages/SchoolsPage';
+import { SchoolsPage } from './pages/SchoolsPage';
+import { SchoolMgmtPage } from './pages/SchoolMgmtPage';
 import SchoolAddOrEditPage from './pages/SchoolAddOrEditPage';
-import SchoolMgmtPage from './pages/SchoolMgmtPage';
-import SchoolUsersPage from './pages/SchoolUsersPage';
 import SchoolUserAddOrEditPage from './pages/SchoolUserAddOrEditPage';
-import TournamentsPage from './pages/TournamentsPage';
+import SchoolSportAddOrEditPage from './pages/SchoolSportAddOrEditPage';
+import SchoolTeamAddOrEditPage from './pages/SchoolTeamAddOrEditPage';
+import { TournamentsPage } from './pages/TournamentsPage';
+import { TournamentMgmtPage } from './pages/TournamentMgmtPage';
 import TournamentAddOrEditPage from './pages/TournamentAddOrEditPage';
-import TournamentMgmtPage from './pages/TournamentMgmtPage';
-import TournamentMatchesPage from './pages/TournamentMatchesPage';
 import TournamentMatchAddOrEditPage from './pages/TournamentMatchAddOrEditPage';
 
 
@@ -49,23 +49,22 @@ function App() {
                     </li>
                 </ul>
                 <Switch>
-
                     <ProvideAuth>
                         <Route exact path="/" component={Register} />
                         <Route path="/contact" component={Contact} />
                         <Route path="/dashboard/:id" component={Dashboard} />
                         <Route path="/git/" exact component={GitUsers} />
                         <Route path="/git/:id" exact component={GitUserDetails} />
-                        <Route path="/schools" component={SchoolsPage} />
-                        <Route path="/schools/:schoolID/AddEdit" component={SchoolAddOrEditPage} />
-                        <Route path="/schools/:schoolID/manage" component={SchoolMgmtPage} />
-                        <Route path="/schools/:schoolID/users/" component={SchoolUsersPage} />
-                        <Route path="/schools/:schoolID/users/:userID/AddEdit" component={SchoolUserAddOrEditPage} />
-                        <Route path="/tournaments" component={TournamentsPage} />
-                        <Route path="/tournaments/:tournamentID/AddEdit" component={TournamentAddOrEditPage} />
-                        <Route path="/tournaments/:tournamentID/manage" component={TournamentMgmtPage} />
-                        <Route path="/tournaments/:tournamentID/matches/" component={TournamentMatchesPage} />
-                        <Route path="/tournaments/:tournamentID/matches/:matchID/AddEdit" component={TournamentMatchAddOrEditPage} />
+                        <Route exact path="/schools" render={() => <SchoolsPage />} />
+                        <Route path="/schools/:schoolID/manage" render={({ match }) => <SchoolMgmtPage match={match} />} />
+                        <Route path="/schools/:schoolID/addEdit" component={SchoolAddOrEditPage} />
+                        <Route path="/schools/:schoolID/users/:userID/addEdit" component={SchoolUserAddOrEditPage} />
+                        <Route path="/schools/:schoolID/sports/addEdit" component={SchoolSportAddOrEditPage} />
+                        <Route path="/schools/:schoolID/teams/:teamID/addEdit" component={SchoolTeamAddOrEditPage} />
+                        <Route exact path="/tournaments" render={() => <TournamentsPage />} />
+                        <Route path="/tournaments/:tournamentID/manage" render={({ match }) => <TournamentMgmtPage match={match} />} />
+                        <Route path="/tournaments/:tournamentID/addEdit" component={TournamentAddOrEditPage} />
+                        <Route path="/tournaments/:tournamentID/matches/:matchID/addEdit" component={TournamentMatchAddOrEditPage} />
                         <Route path="/sample" component={SamplePage} />
                     </ProvideAuth>
 

@@ -14,6 +14,11 @@ export const FETCH_SCHOOL_USER_URL = '/schools/:schoolID/users/:userID';
 export const ADD_SCHOOL_USER_URL = '/schools/:schoolID/users';
 export const UPDATE_SCHOOL_USER_URL = '/schools/:schoolID/users/:userID';
 export const DELETE_SCHOOL_USER_URL = '/schools/:schoolID/users/:userID';
+export const FETCH_SCHOOL_TEAMS_URL = '/schools/:schoolID/teams';
+export const FETCH_SCHOOL_TEAM_URL = '/schools/:schoolID/teams/:teamID';
+export const ADD_SCHOOL_TEAM_URL = '/schools/:schoolID/teams';
+export const UPDATE_SCHOOL_TEAM_URL = '/schools/:schoolID/teams/:teamID';
+export const DELETE_SCHOOL_TEAM_URL = '/schools/:schoolID/teams/:teamID';
 
 export const FETCH_TOURNAMENTS_URL = '/tournaments';
 export const FETCH_TOURNAMENT_URL = '/tournaments/:tournamentID';

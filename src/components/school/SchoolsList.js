@@ -28,16 +28,17 @@ export const SchoolsList = () => {
     }, []);
 
     return (
-        <>{schools &&
-            <table width={'100%'} border={'1px'}>
-                <SchoolsListHeader />
-                {
-                    schools.map((school) => {
-                        return (<SchoolsListItem school={school} />)
-                    })
-                }
-            </table>
-        }
+        <>
+            {schools &&
+                <table width={'100%'} border={'1px'}>
+                    <SchoolsListHeader />
+                    {
+                        schools.map((school) => {
+                            return (<SchoolsListItem school={school} />)
+                        })
+                    }
+                </table>
+            }
         </>
     )
 }

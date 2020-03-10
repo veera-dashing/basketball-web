@@ -11,7 +11,7 @@ import {
     updateSchoolRequest
 } from '../../actions/schoolActions';
 
-export const SchoolForm = ({ id }) => {
+export const SchoolInfoForm = ({ id }) => {
     const dispatch = useDispatch();
     let history = useHistory();
 
@@ -21,12 +21,11 @@ export const SchoolForm = ({ id }) => {
         address: '',
         contactNumber: ''
     });
-    console.log('currentSchool: ' + currentSchool);
-
+    
     useEffect(() => {
         if (id != 0) {
             const onSuccess = (response) => {
-                setCurrentSchool(response.data.data);
+                setCurrentSchool(response.data);
             }
             const onError = (error) => {
                 console.log('Error in fetchSchool: ', error);

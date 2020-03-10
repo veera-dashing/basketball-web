@@ -5,11 +5,11 @@ export const SchoolsListItem = ({ school }) => {
 
     let history = useHistory();
 
-    const onManageSchool = (id) => {
+    const onManageSchoolClick = (id) => {
         history.push(`/schools/${id}/Manage`);
     }
 
-    const onEditSchool = (id) => {
+    const onEditSchoolClick = (id) => {
         history.push(`/schools/${id}/AddEdit`);
     }
 
@@ -17,16 +17,16 @@ export const SchoolsListItem = ({ school }) => {
         <>
             <tr>
                 <td>
-                    <a href={""} onClick={() => onEditSchool(school.id)}>{school.id}</a>
+                    <a href={""} onClick={() => onEditSchoolClick(school.id)}>{school.id}</a>
                 </td>
                 <td>
                     {school.name}
                 </td>
                 <td>
-                    <button key='btnAddSchool' onClick={() => onEditSchool(school.id)} >
+                    <button key='btnEditSchool' onClick={() => onEditSchoolClick(school.id)} >
                         Edit School
                     </button>
-                    <button key='btnAddSchool' onClick={() => onManageSchool(school.id)} >
+                    <button key='btnManageSchool' onClick={() => onManageSchoolClick(school.id)} >
                         Manage School
                     </button>
                 </td>

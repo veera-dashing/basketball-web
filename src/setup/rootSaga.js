@@ -14,6 +14,11 @@ import {
     addSchoolUser,
     updateSchoolUser,
     deleteSchoolUser,
+    fetchSchoolTeams,
+    fetchSchoolTeam,
+    addSchoolTeam,
+    updateSchoolTeam,
+    deleteSchoolTeam,
 } from "../actions/schoolActions";
 import {
     fetchTournaments,
@@ -46,6 +51,12 @@ export function* rootSaga() {
     yield takeLatest(TYPES.ADD_SCHOOL_USER_REQUEST, addSchoolUser);
     yield takeLatest(TYPES.UPDATE_SCHOOL_USER_REQUEST, updateSchoolUser);
     yield takeLatest(TYPES.DELETE_SCHOOL_USER_REQUEST, deleteSchoolUser);
+    yield takeLatest(TYPES.FETCH_SCHOOL_TEAMS_REQUEST, fetchSchoolTeams);
+    yield takeLatest(TYPES.FETCH_SCHOOL_TEAM_REQUEST, fetchSchoolTeam);
+    yield takeLatest(TYPES.ADD_SCHOOL_TEAM_REQUEST, addSchoolTeam);
+    yield takeLatest(TYPES.UPDATE_SCHOOL_TEAM_REQUEST, updateSchoolTeam);
+    yield takeLatest(TYPES.DELETE_SCHOOL_TEAM_REQUEST, deleteSchoolTeam);
+
 
     yield takeLatest(TYPES.FETCH_TOURNAMENTS_REQUEST, fetchTournaments);
     yield takeLatest(TYPES.FETCH_TOURNAMENT_REQUEST, fetchTournament);

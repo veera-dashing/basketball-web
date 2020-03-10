@@ -1,15 +1,22 @@
 import React from 'react';
 
-class TournamentMgmtPage extends React.Component {
+import { TournamentSportsList } from '../components/tournament/TournamentSportsList'
+import { TournamentTeamsList } from '../components/tournament/TournamentTeamsList'
+import { TournamentMatchesList } from '../components/tournament/TournamentMatchesList'
 
-    render() {
-        const { tournamentID } = this.props.match.params;
-        return (<>
-            <h1> Tournament Management</h1>
-            <a href={`/tournaments/${tournamentID}/matches/`}>Matches</a>
+export const TournamentMgmtPage = (props) => {
+
+    const { tournamentID } = props.match.params;
+
+    return (
+        <>
+            <h1>Tournament Management</h1>
+            <h1>Sports</h1>
+            <TournamentSportsList tournamentID={tournamentID} />
+            <h1>Teams</h1>
+            <TournamentTeamsList tournamentID={tournamentID} />
+            <h1>Matches</h1>
+            <TournamentMatchesList tournamentID={tournamentID} />
         </>
-        )
-    }
+    )
 }
-
-export default TournamentMgmtPage;

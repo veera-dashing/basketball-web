@@ -26,6 +26,13 @@ export const schoolUserValidationSchema = Yup.object().shape({
         .nullable(true),
 });
 
+export const schoolTeamValidationSchema = Yup.object().shape({
+    name: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+});
+
 // passwordConfirmation: Yup.string()
 //     .oneOf([values.password], 'Passwords are not the same!')
 //     .required('Password confirmation is required!'),
