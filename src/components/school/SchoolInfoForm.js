@@ -21,7 +21,7 @@ export const SchoolInfoForm = ({ id }) => {
         address: '',
         contactNumber: ''
     });
-    
+
     useEffect(() => {
         if (id != 0) {
             const onSuccess = (response) => {
@@ -30,7 +30,7 @@ export const SchoolInfoForm = ({ id }) => {
             const onError = (error) => {
                 console.log('Error in fetchSchool: ', error);
             }
-            dispatch(fetchSchoolRequest(id, onSuccess, onError));
+            dispatch(fetchSchoolRequest(id, {}, onSuccess, onError));
         }
     }, []);
 
@@ -56,6 +56,10 @@ export const SchoolInfoForm = ({ id }) => {
         }
     }
 
+    const onCancelClick = () => {
+        history.push(`/schools`);
+    }
+
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: currentSchool,
@@ -72,7 +76,10 @@ export const SchoolInfoForm = ({ id }) => {
             <RenderInputField name={'email'} label={'Email'} type='email' formik={formik} />
             <RenderInputField name={'address'} label={'Address'} formik={formik} />
             <RenderInputField name={'contactNumber'} label={'Contact Number'} formik={formik} />
-            <button type="submit">Submit</button>
+            <button key='btnCancel' onClick={() => onCancelClick()} >
+                Cancel
+            </button>
+            <button key='btnSubmitInfoForm' type="submit">Submit</button>
         </form>
     );
 };

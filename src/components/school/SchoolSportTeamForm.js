@@ -11,7 +11,7 @@ import {
     updateSchoolTeamRequest
 } from '../../actions/schoolActions';
 
-export const SchoolTeamForm = ({ schoolID, teamID }) => {
+export const SchoolSportTeamForm = ({ schoolID, teamID }) => {
     const dispatch = useDispatch();
     let history = useHistory();
 

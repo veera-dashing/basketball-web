@@ -6,6 +6,7 @@ export const SchoolSportsListHeader = () => {
             <tr>
                 <td>ID</td>
                 <td>Name</td>
+                <td>Action</td>
             </tr>
         </>
     )

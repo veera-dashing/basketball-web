@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 
 import { SchoolUsersList } from '../components/school/SchoolUsersList';
 import { SchoolSportsList } from '../components/school/SchoolSportsList';
-import { SchoolTeamsList } from '../components/school/SchoolTeamsList';
 import { fetchSchoolRequest } from "../actions/schoolActions";
 import { getQueryParams } from '../utilities/helpers';
 
@@ -17,7 +16,6 @@ export const SchoolMgmtPage = ({ match }) => {
         {
             users: [],
             sports: [],
-            teams: [],
         }
     );
 
@@ -32,7 +30,6 @@ export const SchoolMgmtPage = ({ match }) => {
         const params = getQueryParams(window.location.href);
         params.includeUsers = true;
         params.includeSports = true;
-        params.includeTeams = true;
         dispatch(fetchSchoolRequest(schoolID, params, onSuccess, onError));
     }, []);
 
@@ -43,8 +40,6 @@ export const SchoolMgmtPage = ({ match }) => {
             <SchoolUsersList schoolID={schoolID} schoolUsers={school.users} />
             <h1>Sports</h1>
             <SchoolSportsList schoolID={schoolID} schoolSports={school.sports} />
-            <h1>Teams</h1>
-            <SchoolTeamsList schoolID={schoolID} schoolTeams={school.teams} />
         </>
     )
 }

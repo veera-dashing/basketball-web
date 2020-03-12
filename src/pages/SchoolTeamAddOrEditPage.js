@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SchoolTeamForm } from "../components/school/SchoolTeamForm";
+import { SchoolSportTeamForm } from "../components/school/SchoolSportTeamForm";
 
 class SchoolTeamAddOrEditPage extends React.Component {
 
@@ -10,7 +10,7 @@ class SchoolTeamAddOrEditPage extends React.Component {
         return (
             <>
                 <h1>{title}</h1>
-                <SchoolTeamForm schoolID={schoolID} teamID={teamID} />
+                <SchoolSportTeamForm schoolID={schoolID} teamID={teamID} />
             </>
         )
     }

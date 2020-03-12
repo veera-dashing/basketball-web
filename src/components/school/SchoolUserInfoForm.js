@@ -11,7 +11,7 @@ import {
     updateSchoolUserRequest
 } from '../../actions/schoolActions';
 
-export const SchoolUserForm = ({ schoolID, userID }) => {
+export const SchoolUserInfoForm = ({ schoolID, userID }) => {
     const dispatch = useDispatch();
     let history = useHistory();
 
@@ -57,6 +57,10 @@ export const SchoolUserForm = ({ schoolID, userID }) => {
         }
     }
 
+    const onCancelClick = () => {
+        history.push(`/schools/${schoolID}/manage`);
+    }
+
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: currentUser,
@@ -73,6 +77,9 @@ export const SchoolUserForm = ({ schoolID, userID }) => {
             <RenderInputField name={'lastName'} label={'Last Name'} formik={formik} />
             <RenderInputField name={'email'} label={'Email'} type='email' formik={formik} />
             <RenderInputField name={'contactNumber'} label={'Contact Number'} formik={formik} />
+            <button key='btnCancel' onClick={() => onCancelClick()} >
+                Cancel
+            </button>
             <button type="submit">Submit</button>
         </form>
     );

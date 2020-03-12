@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const SchoolTeamsListHeader = () => {
+export const SchoolSportTeamsListHeader = () => {
     return (
         <>
             <tr>

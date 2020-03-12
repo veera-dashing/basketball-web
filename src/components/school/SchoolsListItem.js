@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 export const SchoolsListItem = ({ school }) => {
 
-    let history = useHistory();
+    const history = useHistory();
 
     const onManageSchoolClick = (id) => {
         history.push(`/schools/${id}/Manage`);

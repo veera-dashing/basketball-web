@@ -22,6 +22,10 @@ export const ADD_SCHOOL_USER_REQUEST = 'add_school_user';
 export const UPDATE_SCHOOL_USER_REQUEST = 'update_school_user';
 export const DELETE_SCHOOL_USER_REQUEST = 'delete_school_user';
 
+export const FETCH_SCHOOL_SPORTS_REQUEST = 'fetch_school_sports';
+export const UPDATE_SCHOOL_SPORTS_REQUEST = 'update_school_sports';
+export const FETCH_SCHOOL_SPORT_REQUEST = 'fetch_school_sport';
+
 export const FETCH_SCHOOL_TEAMS_REQUEST = 'fetch_school_teams';
 export const FETCH_SCHOOL_TEAMS_SUCCESS = 'fetch_school_teams_success';
 export const FETCH_SCHOOL_TEAMS_ERROR = 'fetch_school_teams_error';
