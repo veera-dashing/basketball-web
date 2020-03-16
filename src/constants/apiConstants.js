@@ -17,11 +17,11 @@ export const DELETE_SCHOOL_USER_URL = '/schools/:schoolID/users/:userID';
 export const FETCH_SCHOOL_SPORTS_URL = '/schools/:schoolID/sports';
 export const UPDATE_SCHOOL_SPORTS_URL = '/schools/:schoolID/sports';
 export const FETCH_SCHOOL_SPORT_URL = '/schools/:schoolID/sports/:sportID';
-export const FETCH_SCHOOL_TEAMS_URL = '/schools/:schoolID/teams';
-export const FETCH_SCHOOL_TEAM_URL = '/schools/:schoolID/teams/:teamID';
-export const ADD_SCHOOL_TEAM_URL = '/schools/:schoolID/teams';
-export const UPDATE_SCHOOL_TEAM_URL = '/schools/:schoolID/teams/:teamID';
-export const DELETE_SCHOOL_TEAM_URL = '/schools/:schoolID/teams/:teamID';
+export const FETCH_SCHOOL_SPORT_TEAMS_URL = '/schools/:schoolID/sports/:sportID/teams';
+export const FETCH_SCHOOL_SPORT_TEAM_URL = '/schools/:schoolID/sports/:sportID/teams/:teamID';
+export const ADD_SCHOOL_SPORT_TEAM_URL = '/schools/:schoolID/sports/:sportID/teams';
+export const UPDATE_SCHOOL_SPORT_TEAM_URL = '/schools/:schoolID/sports/:sportID/teams/:teamID';
+export const DELETE_SCHOOL_SPORT_TEAM_URL = '/schools/:schoolID/sports/:sportID/teams/:teamID';
 
 export const FETCH_TOURNAMENTS_URL = '/tournaments';
 export const FETCH_TOURNAMENT_URL = '/tournaments/:tournamentID';

@@ -30,16 +30,16 @@ export const SchoolMgmtPage = ({ match }) => {
         const params = getQueryParams(window.location.href);
         params.includeUsers = true;
         params.includeSports = true;
-        dispatch(fetchSchoolRequest(schoolID, params, onSuccess, onError));
+        //dispatch(fetchSchoolRequest(schoolID, params, onSuccess, onError));
     }, []);
 
     return (
         <>
             <h1>School Management</h1>
             <h1>Users</h1>
-            <SchoolUsersList schoolID={schoolID} schoolUsers={school.users} />
+            <SchoolUsersList schoolID={schoolID} />
             <h1>Sports</h1>
-            <SchoolSportsList schoolID={schoolID} schoolSports={school.sports} />
+            <SchoolSportsList schoolID={schoolID} />
         </>
     )
 }

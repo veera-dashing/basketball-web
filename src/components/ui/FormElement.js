@@ -25,7 +25,6 @@ export const RenderInputField = ({ name, label, type, formik, ...props }) => {
 
 
 export const RenderRadioButton = ({ label, name, formik, ...props }) => {
-
     return (<>
         <label className="form-field" htmlFor={name}>
             <span>{label}:</span>
@@ -37,9 +36,30 @@ export const RenderRadioButton = ({ label, name, formik, ...props }) => {
                 checked={name === formik.values[name]}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-
                 {...props}
             />
+        </label>
+    </>)
+}
+
+export const RenderDropdown = ({ label, name, options, formik, ...props }) => {
+    return (<>
+        <label className="form-field" htmlFor={name}>
+            <span>{label}:</span>
+            <select
+                id={name}
+                name={name}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+            >
+                {options &&
+                    options.map(o =>
+                        <option key={o.id} value={o.text}>
+                            {o.text}
+                        </option>)
+
+                }
+            </select>
         </label>
     </>)
 }

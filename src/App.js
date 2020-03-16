@@ -15,7 +15,7 @@ import SchoolAddOrEditPage from './pages/SchoolAddOrEditPage';
 import SchoolUserAddOrEditPage from './pages/SchoolUserAddOrEditPage';
 import SchoolSportAddOrEditPage from './pages/SchoolSportAddOrEditPage';
 import { SchoolSportMgmtPage } from './pages/SchoolSportMgmtPage';
-import SchoolTeamAddOrEditPage from './pages/SchoolTeamAddOrEditPage';
+import SchoolSportTeamAddOrEditPage from './pages/SchoolSportTeamAddOrEditPage';
 import { TournamentsPage } from './pages/TournamentsPage';
 import { TournamentMgmtPage } from './pages/TournamentMgmtPage';
 import TournamentAddOrEditPage from './pages/TournamentAddOrEditPage';
@@ -61,8 +61,8 @@ function App() {
                         <Route path="/schools/:schoolID/addEdit" component={SchoolAddOrEditPage} />
                         <Route path="/schools/:schoolID/users/:userID/addEdit" component={SchoolUserAddOrEditPage} />
                         <Route path="/schools/:schoolID/sports/addEdit" component={SchoolSportAddOrEditPage} />
-                        <Route path="/schools/:schoolID/sports/:schoolSportID/manage" component={SchoolSportMgmtPage} />
-                        <Route path="/schools/:schoolID/teams/:teamID/addEdit" component={SchoolTeamAddOrEditPage} />
+                        <Route path="/schools/:schoolID/sports/:sportID/manage" component={SchoolSportMgmtPage} />
+                        <Route path="/schools/:schoolID/sports/:sportID/teams/:teamID/addEdit" component={SchoolSportTeamAddOrEditPage} />
                         <Route exact path="/tournaments" render={() => <TournamentsPage />} />
                         <Route path="/tournaments/:tournamentID/manage" render={({ match }) => <TournamentMgmtPage match={match} />} />
                         <Route path="/tournaments/:tournamentID/addEdit" component={TournamentAddOrEditPage} />

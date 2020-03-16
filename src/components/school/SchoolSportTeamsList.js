@@ -4,10 +4,10 @@ import { useHistory } from 'react-router-dom';
 
 import { SchoolSportTeamsListHeader } from './SchoolSportTeamsListHeader';
 import { SchoolSportTeamsListItem } from './SchoolSportTeamsListItem';
-import { fetchSchoolRequest } from "../../actions/schoolActions";
+import { fetchSchoolSportTeamsRequest } from "../../actions/schoolActions";
 import { getQueryParams } from '../../utilities/helpers';
 
-export const SchoolSportTeamsList = ({ schoolID }) => {
+export const SchoolSportTeamsList = ({ schoolID, sportID }) => {
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -16,23 +16,22 @@ export const SchoolSportTeamsList = ({ schoolID }) => {
     //Executes on Page load
     useEffect(() => {
         const onSuccess = (response) => {
-            setSchoolSportTeams(response.data.sportTeams);
+            setSchoolSportTeams(response.data);
         }
         const onError = (error) => {
             console.log('Error in fetchSchool: ', error);
         }
         const params = getQueryParams(window.location.href);
-        params.includeSportTeams = true;
-        dispatch(fetchSchoolRequest(schoolID, params, onSuccess, onError));
+        dispatch(fetchSchoolSportTeamsRequest(schoolID, sportID, params, onSuccess, onError));
     }, []);
 
-    const onAddSchoolTeamClick = () => {
-        history.push(`/schools/${schoolID}/teams/0/addEdit`);
+    const onAddSchoolSportTeamClick = () => {
+        history.push(`/schools/${schoolID}/sports/${sportID}/teams/0/addEdit`);
     }
 
     return (
         <>
-            <button key='btnAddSchoolTeam' onClick={() => onAddSchoolTeamClick()} >
+            <button key='btnAddSchoolSportTeam' onClick={() => onAddSchoolSportTeamClick()} >
                 Add Team
             </button>
             {(!schoolSportTeams || schoolSportTeams.length == 0) &&
@@ -45,7 +44,7 @@ export const SchoolSportTeamsList = ({ schoolID }) => {
                     <SchoolSportTeamsListHeader />
                     {
                         schoolSportTeams.map((schoolSportTeam) => {
-                            return (<SchoolSportTeamsListItem schoolID={schoolID} schoolSportTeam={schoolSportTeam} />)
+                            return (<SchoolSportTeamsListItem schoolID={schoolID} sportID={sportID} sportTeam={schoolSportTeam} />)
                         })
                     }
                 </table>

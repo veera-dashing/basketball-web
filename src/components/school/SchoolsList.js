@@ -15,16 +15,14 @@ export const SchoolsList = () => {
 
     //Executes on Page load
     useEffect(() => {
-        if (!schools || schools.length == 0) {
-            const onSuccess = (response) => {
+        const onSuccess = (response) => {
 
-            }
-            const onError = (error) => {
-                console.log('Error in fetchSchools: ', error);
-            }
-            const params = getQueryParams(window.location.href);
-            dispatch(fetchSchoolsRequest(params, onSuccess, onError));
         }
+        const onError = (error) => {
+            console.log('Error in fetchSchools: ', error);
+        }
+        const params = getQueryParams(window.location.href);
+        dispatch(fetchSchoolsRequest(params, onSuccess, onError));
     }, []);
 
     return (

@@ -15,18 +15,17 @@ export const SchoolUserInfoForm = ({ schoolID, userID }) => {
     const dispatch = useDispatch();
     let history = useHistory();
 
-    const [currentUser, setCurrentUser] = useState({
+    const [currentSchoolUser, setCurrentSchoolUser] = useState({
         firstName: '',
         lastName: '',
         email: '',
         contactNumber: ''
     });
-    console.log('currentUser: ' + currentUser);
 
     useEffect(() => {
         if (userID != 0) {
             const onSuccess = (response) => {
-                setCurrentUser(response.data);
+                setCurrentSchoolUser(response.data);
             }
             const onError = (error) => {
                 console.log('Error in fetchSchoolUser: ', error);
@@ -38,35 +37,34 @@ export const SchoolUserInfoForm = ({ schoolID, userID }) => {
     const onSaveSchoolUser = (data) => {
         if (!data.id) {
             const onSuccess = (response) => {
-                history.push(`/schools/${schoolID}/users`);
+                history.push(`/schools/${schoolID}/manage`);
             }
             const onError = (error) => {
                 console.log('Error in addSchoolUser: ', error);
-                history.push(`/schools/${schoolID}/users`);
+                history.push(`/schools/${schoolID}/manage`);
             }
             dispatch(addSchoolUserRequest(schoolID, data, onSuccess, onError));
         } else {
             const onSuccess = (response) => {
-                history.push(`/schools/${schoolID}/users`);
+                history.push(`/schools/${schoolID}/manage`);
             }
             const onError = (error) => {
                 console.log('Error in updateSchoolUser: ', error);
-                history.push(`/schools/${schoolID}/users`);
+                history.push(`/schools/${schoolID}/manage`);
             }
             dispatch(updateSchoolUserRequest(schoolID, data.id, data, onSuccess, onError));
         }
     }
 
-    const onCancelClick = () => {
+    const onCancelUserInfoFormClick = () => {
         history.push(`/schools/${schoolID}/manage`);
     }
 
     const formik = useFormik({
         enableReinitialize: true,
-        initialValues: currentUser,
+        initialValues: currentSchoolUser,
         validationSchema: schoolUserValidationSchema,
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
             onSaveSchoolUser(values);
         },
     });
@@ -77,10 +75,8 @@ export const SchoolUserInfoForm = ({ schoolID, userID }) => {
             <RenderInputField name={'lastName'} label={'Last Name'} formik={formik} />
             <RenderInputField name={'email'} label={'Email'} type='email' formik={formik} />
             <RenderInputField name={'contactNumber'} label={'Contact Number'} formik={formik} />
-            <button key='btnCancel' onClick={() => onCancelClick()} >
-                Cancel
-            </button>
-            <button type="submit">Submit</button>
+            <button key='btnCancelUserInfoForm' onClick={() => onCancelUserInfoFormClick()} >Cancel</button>
+            <button key='btnSubmitUserInfoForm' type="submit">Submit</button>
         </form>
     );
 };

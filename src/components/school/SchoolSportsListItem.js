@@ -12,16 +12,18 @@ export const SchoolSportsListItem = ({ schoolID, schoolSport }) => {
 
     return (
         <>
-            <tr>
+            <tr key={schoolSport.id}>
                 <td>
                     {schoolSport.id}
                 </td>
                 <td>
                     {schoolSport.name}
                 </td>
-                <button key='btnManageSchoolSport' onClick={() => onManageSchoolSportClick(schoolSport.id)} >
-                    Manage Sport
+                <td>
+                    <button key='btnManageSchoolSport' onClick={() => onManageSchoolSportClick(schoolSport.id)} >
+                        Manage Sport
                 </button>
+                </td>
             </tr>
         </>
     )

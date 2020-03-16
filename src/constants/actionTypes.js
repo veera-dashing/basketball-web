@@ -26,13 +26,13 @@ export const FETCH_SCHOOL_SPORTS_REQUEST = 'fetch_school_sports';
 export const UPDATE_SCHOOL_SPORTS_REQUEST = 'update_school_sports';
 export const FETCH_SCHOOL_SPORT_REQUEST = 'fetch_school_sport';
 
-export const FETCH_SCHOOL_TEAMS_REQUEST = 'fetch_school_teams';
-export const FETCH_SCHOOL_TEAMS_SUCCESS = 'fetch_school_teams_success';
-export const FETCH_SCHOOL_TEAMS_ERROR = 'fetch_school_teams_error';
-export const FETCH_SCHOOL_TEAM_REQUEST = 'fetch_school_team';
-export const ADD_SCHOOL_TEAM_REQUEST = 'add_school_team';
-export const UPDATE_SCHOOL_TEAM_REQUEST = 'update_school_team';
-export const DELETE_SCHOOL_TEAM_REQUEST = 'delete_school_team';
+export const FETCH_SCHOOL_SPORT_TEAMS_REQUEST = 'fetch_school_sport_teams';
+export const FETCH_SCHOOL_SPORT_TEAMS_SUCCESS = 'fetch_school_sport_teams_success';
+export const FETCH_SCHOOL_SPORT_TEAMS_ERROR = 'fetch_school_sport_teams_error';
+export const FETCH_SCHOOL_SPORT_TEAM_REQUEST = 'fetch_school_sport_team';
+export const ADD_SCHOOL_SPORT_TEAM_REQUEST = 'add_school_sport_team';
+export const UPDATE_SCHOOL_SPORT_TEAM_REQUEST = 'update_school_sport_team';
+export const DELETE_SCHOOL_SPORT_TEAM_REQUEST = 'delete_school_sport_team';
 
 export const FETCH_TOURNAMENTS_REQUEST = 'fetch_tournaments';
 export const FETCH_TOURNAMENTS_SUCCESS = 'fetch_tournaments_success';

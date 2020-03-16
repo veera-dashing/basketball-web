@@ -6,20 +6,17 @@ import { useFormik } from 'formik';
 import { schoolTeamValidationSchema } from './constants';
 import { RenderInputField } from '../ui/FormElement';
 import {
-    fetchSchoolTeamRequest,
-    addSchoolTeamRequest,
-    updateSchoolTeamRequest
+    fetchSchoolSportTeamRequest,
+    addSchoolSportTeamRequest,
+    updateSchoolSportTeamRequest
 } from '../../actions/schoolActions';
 
-export const SchoolSportTeamForm = ({ schoolID, teamID }) => {
+export const SchoolSportTeamForm = ({ schoolID, sportID, teamID }) => {
     const dispatch = useDispatch();
     let history = useHistory();
 
     const [currentTeam, setCurrentTeam] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        contactNumber: ''
+        name: '',
     });
     console.log('currentTeam: ' + currentTeam);
 
@@ -29,31 +26,31 @@ export const SchoolSportTeamForm = ({ schoolID, teamID }) => {
                 setCurrentTeam(response.data);
             }
             const onError = (error) => {
-                console.log('Error in fetchSchoolTeam: ', error);
+                console.log('Error in fetchSchoolSportTeam: ', error);
             }
-            dispatch(fetchSchoolTeamRequest(schoolID, teamID, onSuccess, onError));
+            dispatch(fetchSchoolSportTeamRequest(schoolID, sportID, teamID, onSuccess, onError));
         }
     }, []);
 
-    const onSaveSchoolTeam = (data) => {
+    const onSaveSchoolSportTeam = (data) => {
         if (!data.id) {
             const onSuccess = (response) => {
-                history.push(`/schools/${schoolID}/teams`);
+                history.push(`/schools/${schoolID}/sports/${sportID}/manage`);
             }
             const onError = (error) => {
                 console.log('Error in addSchoolTeam: ', error);
-                history.push(`/schools/${schoolID}/teams`);
+                history.push(`/schools/${schoolID}/sports/${sportID}/manage`);
             }
-            dispatch(addSchoolTeamRequest(schoolID, data, onSuccess, onError));
+            dispatch(addSchoolSportTeamRequest(schoolID, sportID, data, onSuccess, onError));
         } else {
             const onSuccess = (response) => {
-                history.push(`/schools/${schoolID}/teams`);
+                history.push(`/schools/${schoolID}/sports/${sportID}/manage`);
             }
             const onError = (error) => {
                 console.log('Error in updateSchoolTeam: ', error);
-                history.push(`/schools/${schoolID}/teams`);
+                history.push(`/schools/${schoolID}/sports/${sportID}/manage`);
             }
-            dispatch(updateSchoolTeamRequest(schoolID, data.id, data, onSuccess, onError));
+            dispatch(updateSchoolSportTeamRequest(schoolID, sportID, data.id, data, onSuccess, onError));
         }
     }
 
@@ -62,15 +59,20 @@ export const SchoolSportTeamForm = ({ schoolID, teamID }) => {
         initialValues: currentTeam,
         validationSchema: schoolTeamValidationSchema,
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-            onSaveSchoolTeam(values);
+            //alert(JSON.stringify(values, null, 2));
+            onSaveSchoolSportTeam(values);
         },
     });
+
+    const onCancelFormClick = () => {
+        history.push(`/schools/${schoolID}/sports/${sportID}/manage`);
+    }
 
     return (
         <form onSubmit={formik.handleSubmit}>
             <RenderInputField name={'name'} label={'Name'} formik={formik} />
-            <button type="submit">Submit</button>
+            <button key='btnCancelForm' onClick={() => onCancelFormClick()} >Cancel</button>
+            <button key='btnSubmitForm' type="submit">Submit</button>
         </form>
     );
 };

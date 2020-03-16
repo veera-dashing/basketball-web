@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 
 export const schoolValidationSchema = Yup.object().shape({
     name: Yup.string()
-        .min(2, 'Too Short!')
+        .min(1, 'Too Short!')
         .max(50, 'Too Long!')
         .required('Required'),
     email: Yup.string()
@@ -15,10 +15,14 @@ export const schoolValidationSchema = Yup.object().shape({
 });
 
 export const schoolUserValidationSchema = Yup.object().shape({
-    name: Yup.string()
-        .min(2, 'Too Short!')
+    firstName: Yup.string()
+        .min(1, 'Too Short!')
         .max(50, 'Too Long!')
         .required('Required'),
+    lastName: Yup.string()
+        .min(1, 'Too Short!')
+        .max(50, 'Too Long!')
+        .nullable(true),
     email: Yup.string()
         .email('Invalid email')
         .required('Required'),
@@ -28,7 +32,7 @@ export const schoolUserValidationSchema = Yup.object().shape({
 
 export const schoolTeamValidationSchema = Yup.object().shape({
     name: Yup.string()
-        .min(2, 'Too Short!')
+        .min(1  , 'Too Short!')
         .max(50, 'Too Long!')
         .required('Required'),
 });

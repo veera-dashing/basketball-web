@@ -454,9 +454,10 @@ export function* fetchSchoolSport(action) {
 | Fetch School Teams
 |--------------------------------------------------------------------------
 */
-export const fetchSchoolTeamsRequest = (schoolID, params, onSuccess, onFailure) => ({
-    type: TYPES.FETCH_SCHOOL_TEAMS_REQUEST,
+export const fetchSchoolSportTeamsRequest = (schoolID, sportID, params, onSuccess, onFailure) => ({
+    type: TYPES.FETCH_SCHOOL_SPORT_TEAMS_REQUEST,
     schoolID,
+    sportID,
     params,
     onSuccess,
     onFailure
@@ -467,11 +468,11 @@ export const fetchSchoolTeamsRequest = (schoolID, params, onSuccess, onFailure) 
  *
  * @param action action type
  */
-export function* fetchSchoolTeams(action) {
-    const { schoolID, params, onSuccess, onFailure } = action;
+export function* fetchSchoolSportTeams(action) {
+    const { schoolID, sportID, params, onSuccess, onFailure } = action;
     try {
         const url = computePaginationURL(
-            URLS.FETCH_SCHOOL_TEAMS_URL.replace(':schoolID', schoolID),
+            URLS.FETCH_SCHOOL_SPORT_TEAMS_URL.replace(':schoolID', schoolID).replace(':sportID', sportID),
             params);
         const response = yield call(coreApi.get, url);
         onSuccess(response.data);
@@ -485,9 +486,10 @@ export function* fetchSchoolTeams(action) {
 | Fetch School Team
 |--------------------------------------------------------------------------
 */
-export const fetchSchoolTeamRequest = (schoolID, teamID, onSuccess, onFailure) => ({
-    type: TYPES.FETCH_SCHOOL_TEAM_REQUEST,
+export const fetchSchoolSportTeamRequest = (schoolID, sportID, teamID, onSuccess, onFailure) => ({
+    type: TYPES.FETCH_SCHOOL_SPORT_TEAM_REQUEST,
     schoolID,
+    sportID,
     teamID,
     onSuccess,
     onFailure
@@ -498,12 +500,12 @@ export const fetchSchoolTeamRequest = (schoolID, teamID, onSuccess, onFailure) =
  *
  * @param action action type
  */
-export function* fetchSchoolTeam(action) {
-    const { schoolID, teamID, onSuccess, onFailure } = action;
+export function* fetchSchoolSportTeam(action) {
+    const { schoolID, sportID, teamID, onSuccess, onFailure } = action;
     try {
         const response = yield call(
             coreApi.get,
-            URLS.FETCH_SCHOOL_TEAM_URL.replace(':schoolID', schoolID).replace(':teamID', teamID)
+            URLS.FETCH_SCHOOL_SPORT_TEAM_URL.replace(':schoolID', schoolID).replace(':sportID', sportID).replace(':teamID', teamID)
         );
         onSuccess(response.data);
     } catch (error) {
@@ -516,9 +518,10 @@ export function* fetchSchoolTeam(action) {
 | Add School Team
 |--------------------------------------------------------------------------
 */
-export const addSchoolTeamRequest = (schoolID, values, onSuccess, onFailure) => ({
-    type: TYPES.ADD_SCHOOL_TEAM_REQUEST,
+export const addSchoolSportTeamRequest = (schoolID, sportID, values, onSuccess, onFailure) => ({
+    type: TYPES.ADD_SCHOOL_SPORT_TEAM_REQUEST,
     schoolID,
+    sportID,
     values,
     onSuccess,
     onFailure
@@ -529,12 +532,12 @@ export const addSchoolTeamRequest = (schoolID, values, onSuccess, onFailure) => 
  *
  * @param action action type
  */
-export function* addSchoolTeam(action) {
-    const { schoolID, values, onSuccess, onFailure } = action;
+export function* addSchoolSportTeam(action) {
+    const { schoolID, sportID, values, onSuccess, onFailure } = action;
     try {
         const response = yield call(
             coreApi.post,
-            URLS.ADD_SCHOOL_TEAM_URL.replace(':schoolID', schoolID),
+            URLS.ADD_SCHOOL_SPORT_TEAM_URL.replace(':schoolID', schoolID).replace(':sportID', sportID),
             values);
         onSuccess(response.data);
     } catch (error) {
@@ -547,15 +550,17 @@ export function* addSchoolTeam(action) {
 | Update School Team
 |--------------------------------------------------------------------------
 */
-export const updateSchoolTeamRequest = (
+export const updateSchoolSportTeamRequest = (
     schoolID,
+    sportID,
     teamID,
     values,
     onSuccess,
     onFailure
 ) => ({
-    type: TYPES.UPDATE_SCHOOL_TEAM_REQUEST,
+    type: TYPES.UPDATE_SCHOOL_SPORT_TEAM_REQUEST,
     schoolID,
+    sportID,
     teamID,
     values,
     onSuccess,
@@ -567,12 +572,12 @@ export const updateSchoolTeamRequest = (
  *
  * @param action action type
  */
-export function* updateSchoolTeam(action) {
-    const { schoolID, teamID, values, onSuccess, onFailure } = action;
+export function* updateSchoolSportTeam(action) {
+    const { schoolID, sportID, teamID, values, onSuccess, onFailure } = action;
     try {
         const response = yield call(
             coreApi.put,
-            URLS.UPDATE_SCHOOL_TEAM_URL.replace(':schoolID', schoolID).replace(':teamID', teamID),
+            URLS.UPDATE_SCHOOL_SPORT_TEAM_URL.replace(':schoolID', schoolID).replace(':sportID', sportID).replace(':teamID', teamID),
             values
         );
         onSuccess(response.data);
@@ -586,14 +591,16 @@ export function* updateSchoolTeam(action) {
 | Delete School Team
 |--------------------------------------------------------------------------
 */
-export const deleteSchoolTeamRequest = (
+export const deleteSchoolSportTeamRequest = (
     schoolID,
+    sportID,
     teamID,
     onSuccess,
     onFailure
 ) => ({
-    type: TYPES.DELETE_SCHOOL_TEAM_REQUEST,
+    type: TYPES.DELETE_SCHOOL_SPORT_TEAM_REQUEST,
     schoolID,
+    sportID,
     teamID,
     onSuccess,
     onFailure
@@ -604,12 +611,12 @@ export const deleteSchoolTeamRequest = (
  *
  * @param action action type
  */
-export function* deleteSchoolTeam(action) {
-    const { schoolID, teamID, onSuccess, onFailure } = action;
+export function* deleteSchoolSportTeam(action) {
+    const { schoolID, sportID, teamID, onSuccess, onFailure } = action;
     try {
         const response = yield call(
             coreApi.delete,
-            URLS.DELETE_SCHOOL_TEAM_URL.replace(':schoolID', schoolID).replace(':teamID', teamID),
+            URLS.DELETE_SCHOOL_SPORT_TEAM_URL.replace(':schoolID', schoolID).replace(':sportID', sportID).replace(':teamID', teamID),
         );
         onSuccess(response.data);
     } catch (error) {

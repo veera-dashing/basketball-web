@@ -4,25 +4,37 @@ import { useHistory } from 'react-router-dom';
 
 import { SchoolSportsListHeader } from './SchoolSportsListHeader';
 import { SchoolSportsListItem } from './SchoolSportsListItem';
+import { fetchSchoolSportsRequest } from "../../actions/schoolActions";
 
-export const SchoolSportsList = ({ schoolID, schoolSports }) => {
+export const SchoolSportsList = ({ schoolID }) => {
 
-    const { history } = useHistory();
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const [schoolSports, setSchoolSports] = useState();
 
-    const onAddSchoolSportClick = () => {
+    //Executes on Page load
+    useEffect(() => {
+        const onSuccess = (response) => {
+            setSchoolSports(response.data)
+        }
+        const onError = (error) => {
+            console.log('Error in fetchSchoolSports: ', error);
+        }
+        dispatch(fetchSchoolSportsRequest(schoolID, onSuccess, onError));
+    }, []);
+
+    const onUpdateSchoolSportClick = () => {
         history.push();
     }
 
-    const btnUpdateSportsTitle = (!schoolSports || schoolSports.length == 0) ? 'Add Sports' : 'Update Sports';
-
     return (
         <>
-            <button key='btnAddSchoolSport' onClick={() => onAddSchoolSportClick()} >
-                {btnUpdateSportsTitle}
+            <button key='btnUpdateSchoolSport' onClick={() => onUpdateSchoolSportClick()} >
+                Update Sports
             </button>
             {(!schoolSports || schoolSports.length == 0) &&
                 <div>
-                    No sports have been configured for this School
+                    No sports have been configured for this school
                 </div>
             }
             {schoolSports &&

@@ -14,11 +14,14 @@ import {
     addSchoolUser,
     updateSchoolUser,
     deleteSchoolUser,
-    fetchSchoolTeams,
-    fetchSchoolTeam,
-    addSchoolTeam,
-    updateSchoolTeam,
-    deleteSchoolTeam,
+    fetchSchoolSports,
+    updateSchoolSports,
+    fetchSchoolSport,
+    fetchSchoolSportTeams,
+    fetchSchoolSportTeam,
+    addSchoolSportTeam,
+    updateSchoolSportTeam,
+    deleteSchoolSportTeam,
 } from "../actions/schoolActions";
 import {
     fetchTournaments,
@@ -51,12 +54,14 @@ export function* rootSaga() {
     yield takeLatest(TYPES.ADD_SCHOOL_USER_REQUEST, addSchoolUser);
     yield takeLatest(TYPES.UPDATE_SCHOOL_USER_REQUEST, updateSchoolUser);
     yield takeLatest(TYPES.DELETE_SCHOOL_USER_REQUEST, deleteSchoolUser);
-    yield takeLatest(TYPES.FETCH_SCHOOL_TEAMS_REQUEST, fetchSchoolTeams);
-    yield takeLatest(TYPES.FETCH_SCHOOL_TEAM_REQUEST, fetchSchoolTeam);
-    yield takeLatest(TYPES.ADD_SCHOOL_TEAM_REQUEST, addSchoolTeam);
-    yield takeLatest(TYPES.UPDATE_SCHOOL_TEAM_REQUEST, updateSchoolTeam);
-    yield takeLatest(TYPES.DELETE_SCHOOL_TEAM_REQUEST, deleteSchoolTeam);
-
+    yield takeLatest(TYPES.FETCH_SCHOOL_SPORTS_REQUEST, fetchSchoolSports);
+    yield takeLatest(TYPES.UPDATE_SCHOOL_SPORTS_REQUEST, updateSchoolSports);
+    yield takeLatest(TYPES.FETCH_SCHOOL_SPORT_REQUEST, fetchSchoolSport);
+    yield takeLatest(TYPES.FETCH_SCHOOL_SPORT_TEAMS_REQUEST, fetchSchoolSportTeams);
+    yield takeLatest(TYPES.FETCH_SCHOOL_SPORT_TEAM_REQUEST, fetchSchoolSportTeam);
+    yield takeLatest(TYPES.ADD_SCHOOL_SPORT_TEAM_REQUEST, addSchoolSportTeam);
+    yield takeLatest(TYPES.UPDATE_SCHOOL_SPORT_TEAM_REQUEST, updateSchoolSportTeam);
+    yield takeLatest(TYPES.DELETE_SCHOOL_SPORT_TEAM_REQUEST, deleteSchoolSportTeam);
 
     yield takeLatest(TYPES.FETCH_TOURNAMENTS_REQUEST, fetchTournaments);
     yield takeLatest(TYPES.FETCH_TOURNAMENT_REQUEST, fetchTournament);

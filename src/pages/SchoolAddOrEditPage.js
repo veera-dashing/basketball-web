@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { SchoolInfoForm } from "../components/school/SchoolInfoForm";
 
 class SchoolAddOrEditPage extends React.Component {

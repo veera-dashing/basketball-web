@@ -56,7 +56,7 @@ export const SchoolInfoForm = ({ id }) => {
         }
     }
 
-    const onCancelClick = () => {
+    const onCancelInfoFormClick = () => {
         history.push(`/schools`);
     }
 
@@ -76,9 +76,7 @@ export const SchoolInfoForm = ({ id }) => {
             <RenderInputField name={'email'} label={'Email'} type='email' formik={formik} />
             <RenderInputField name={'address'} label={'Address'} formik={formik} />
             <RenderInputField name={'contactNumber'} label={'Contact Number'} formik={formik} />
-            <button key='btnCancel' onClick={() => onCancelClick()} >
-                Cancel
-            </button>
+            <button key='btnCancelInfoForm' onClick={() => onCancelInfoFormClick()} >Cancel</button>
             <button key='btnSubmitInfoForm' type="submit">Submit</button>
         </form>
     );

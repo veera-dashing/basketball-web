@@ -34,7 +34,12 @@ export const SchoolUsersList = ({ schoolID }) => {
             <button key='btnAddSchoolUser' onClick={() => onAddSchoolUserClick()} >
                 Add User
             </button>
-            {schoolUsers &&
+            {(!schoolUsers || schoolUsers.length == 0) &&
+                <div>
+                    No users have been configured for this school
+                </div>
+            }
+            {schoolUsers && schoolUsers.length > 0 && 
                 <table width={'100%'} border={'1px'}>
                     <SchoolUsersListHeader />
                     {
