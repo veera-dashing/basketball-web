@@ -25,15 +25,8 @@ export const SchoolSportTeamsList = ({ schoolID, sportID }) => {
         dispatch(fetchSchoolSportTeamsRequest(schoolID, sportID, params, onSuccess, onError));
     }, []);
 
-    const onAddSchoolSportTeamClick = () => {
-        history.push(`/schools/${schoolID}/sports/${sportID}/teams/0/addEdit`);
-    }
-
     return (
         <>
-            <button key='btnAddSchoolSportTeam' onClick={() => onAddSchoolSportTeamClick()} >
-                Add Team
-            </button>
             {(!schoolSportTeams || schoolSportTeams.length == 0) &&
                 <div>
                     No teams have been configured for this School

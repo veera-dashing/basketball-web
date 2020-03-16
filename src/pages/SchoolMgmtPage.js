@@ -10,6 +10,7 @@ import { getQueryParams } from '../utilities/helpers';
 export const SchoolMgmtPage = ({ match }) => {
 
     const { schoolID } = match.params;
+    let history = useHistory();
 
     const dispatch = useDispatch();
     const [school, setSchool] = useState(
@@ -33,12 +34,26 @@ export const SchoolMgmtPage = ({ match }) => {
         //dispatch(fetchSchoolRequest(schoolID, params, onSuccess, onError));
     }, []);
 
+    const onAddSchoolUserClick = () => {
+        history.push(`/schools/${schoolID}/users/0/AddEdit`);
+    }
+
+    const onUpdateSchoolSportClick = () => {
+        history.push();
+    }
+
     return (
         <>
             <h1>School Management</h1>
             <h1>Users</h1>
+            <button key='btnAddSchoolUser' onClick={() => onAddSchoolUserClick()} >
+                Add
+            </button>
             <SchoolUsersList schoolID={schoolID} />
             <h1>Sports</h1>
+            <button key='btnUpdateSchoolSport' onClick={() => onUpdateSchoolSportClick()} >
+                Update
+            </button>
             <SchoolSportsList schoolID={schoolID} />
         </>
     )

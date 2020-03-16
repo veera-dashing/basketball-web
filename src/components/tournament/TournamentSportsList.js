@@ -26,15 +26,8 @@ export const TournamentSportsList = ({ tournamentID }) => {
         dispatch(fetchTournamentRequest(tournamentID, params, onSuccess, onError));
     }, []);
 
-    const onAddTournamentSportClick = () => {
-        alert('Add Sports popup coming soon');
-    }
-
     return (
         <>
-            <button key='btnAddTournamentSport' onClick={() => onAddTournamentSportClick()} >
-                Add Sport
-            </button>
             {(!tournamentSports || tournamentSports.length == 0) &&
                 <div>
                     No sports have been configured for this tournament

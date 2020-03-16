@@ -23,11 +23,11 @@ export const TournamentsListItem = ({ tournament }) => {
                     {tournament.name}
                 </td>
                 <td>
-                    <button key='btnAddTournament' onClick={() => onEditTournament(tournament.id)} >
-                        Edit Tournament
+                    <button key='btnEditTournament' onClick={() => onEditTournament(tournament.id)} >
+                        Edit
                     </button>
-                    <button key='btnAddTournament' onClick={() => onManageTournament(tournament.id)} >
-                        Manage Tournament
+                    <button key='btnManageTournament' onClick={() => onManageTournament(tournament.id)} >
+                        Manage
                     </button>
                 </td>
             </tr>

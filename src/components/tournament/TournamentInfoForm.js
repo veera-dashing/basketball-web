@@ -17,16 +17,13 @@ export const TournamentInfoForm = ({ id }) => {
 
     const [currentTournament, setCurrentTournament] = useState({
         name: '',
-        email: '',
-        address: '',
-        contactNumber: ''
     });
     console.log('currentTournament: ' + currentTournament);
 
     useEffect(() => {
         if (id != 0) {
             const onSuccess = (response) => {
-                setCurrentTournament(response.data.data);
+                setCurrentTournament(response.data);
             }
             const onError = (error) => {
                 console.log('Error in fetchTournament: ', error);
@@ -67,10 +64,15 @@ export const TournamentInfoForm = ({ id }) => {
         },
     });
 
+    const onCancelInfoFormClick = () => {
+        history.push(`/tournaments`);
+    }
+
     return (
         <form onSubmit={formik.handleSubmit}>
             <RenderInputField name={'name'} label={'Name'} formik={formik} />
-            <button type="submit">Submit</button>
+            <button key='btnCancelInfoForm' onClick={() => onCancelInfoFormClick()} >Cancel</button>
+            <button key='btnSubmitInfoForm' type="submit">Submit</button>
         </form>
     );
 };

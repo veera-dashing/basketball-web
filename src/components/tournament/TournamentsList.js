@@ -15,16 +15,14 @@ export const TournamentsList = () => {
 
     //Executes on Page load
     useEffect(() => {
-        if (!tournaments || tournaments.length == 0) {
-            const onSuccess = (response) => {
+        const onSuccess = (response) => {
 
-            }
-            const onError = (error) => {
-                console.log('Error in fetchTournaments: ', error);
-            }
-            const params = getQueryParams(window.location.href);
-            dispatch(fetchTournamentsRequest(params, onSuccess, onError));
         }
+        const onError = (error) => {
+            console.log('Error in fetchTournaments: ', error);
+        }
+        const params = getQueryParams(window.location.href);
+        dispatch(fetchTournamentsRequest(params, onSuccess, onError));
     }, []);
 
     return (

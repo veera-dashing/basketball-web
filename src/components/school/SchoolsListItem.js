@@ -24,10 +24,10 @@ export const SchoolsListItem = ({ school }) => {
                 </td>
                 <td>
                     <button key='btnEditSchool' onClick={() => onEditSchoolClick(school.id)} >
-                        Edit School
+                        Edit
                     </button>
                     <button key='btnManageSchool' onClick={() => onManageSchoolClick(school.id)} >
-                        Manage School
+                        Manage
                     </button>
                 </td>
             </tr>

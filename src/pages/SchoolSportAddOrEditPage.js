@@ -2,17 +2,14 @@ import React from 'react';
 
 import { SchoolSportForm } from "../components/school/SchoolSportForm";
 
-class SchoolSportAddOrEditPage extends React.Component {
+export const SchoolSportAddOrEditPage = ({ match }) => {
 
-    render() {
-        const { schoolID } = this.props.match.params;
-        return (
-            <>
-                <h1>Add School Sports</h1>
-                <SchoolSportForm schoolID={schoolID} />
-            </>
-        )
-    }
+    const { schoolID } = match.params;
+
+    return (
+        <>
+            <h1>Add School Sports</h1>
+            <SchoolSportForm schoolID={schoolID} />
+        </>
+    )
 }
-
-export default SchoolSportAddOrEditPage;

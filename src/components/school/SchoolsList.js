@@ -27,6 +27,11 @@ export const SchoolsList = () => {
 
     return (
         <>
+         {(!schools || schools.length == 0) &&
+                <div>
+                    No schools have been configured 
+                </div>
+            }
             {schools &&
                 <table width={'100%'} border={'1px'}>
                     <SchoolsListHeader />

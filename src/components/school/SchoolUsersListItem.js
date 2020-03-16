@@ -19,8 +19,8 @@ export const SchoolUsersListItem = ({ schoolID, schoolUser }) => {
                     {schoolUser.firstName}
                 </td>
                 <td>
-                    <button key='btnAddSchool' onClick={() => onEditSchoolUser(schoolID, schoolUser.id)} >
-                        Edit User
+                    <button key='btnEditSchool' onClick={() => onEditSchoolUser(schoolID, schoolUser.id)} >
+                        Edit
                     </button>
                 </td>
             </tr>

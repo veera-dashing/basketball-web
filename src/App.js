@@ -11,15 +11,15 @@ import SamplePage from "./pages/SamplePage";
 import { GitUserDetails } from './components/git/GitUsersDetails';
 import { SchoolsPage } from './pages/SchoolsPage';
 import { SchoolMgmtPage } from './pages/SchoolMgmtPage';
-import SchoolAddOrEditPage from './pages/SchoolAddOrEditPage';
-import SchoolUserAddOrEditPage from './pages/SchoolUserAddOrEditPage';
-import SchoolSportAddOrEditPage from './pages/SchoolSportAddOrEditPage';
+import { SchoolAddOrEditPage } from './pages/SchoolAddOrEditPage';
+import { SchoolUserAddOrEditPage } from './pages/SchoolUserAddOrEditPage';
+import { SchoolSportAddOrEditPage } from './pages/SchoolSportAddOrEditPage';
 import { SchoolSportMgmtPage } from './pages/SchoolSportMgmtPage';
-import SchoolSportTeamAddOrEditPage from './pages/SchoolSportTeamAddOrEditPage';
+import { SchoolSportTeamAddOrEditPage } from './pages/SchoolSportTeamAddOrEditPage';
 import { TournamentsPage } from './pages/TournamentsPage';
 import { TournamentMgmtPage } from './pages/TournamentMgmtPage';
-import TournamentAddOrEditPage from './pages/TournamentAddOrEditPage';
-import TournamentMatchAddOrEditPage from './pages/TournamentMatchAddOrEditPage';
+import { TournamentAddOrEditPage } from './pages/TournamentAddOrEditPage';
+import { TournamentMatchAddOrEditPage } from './pages/TournamentMatchAddOrEditPage';
 
 
 function App() {
@@ -52,22 +52,22 @@ function App() {
                 <Switch>
                     <ProvideAuth>
                         <Route exact path="/" component={Register} />
+                        <Route path="/sample" component={SamplePage} />
                         <Route path="/contact" component={Contact} />
                         <Route path="/dashboard/:id" component={Dashboard} />
                         <Route path="/git/" exact component={GitUsers} />
                         <Route path="/git/:id" exact component={GitUserDetails} />
                         <Route exact path="/schools" render={() => <SchoolsPage />} />
                         <Route path="/schools/:schoolID/manage" render={({ match }) => <SchoolMgmtPage match={match} />} />
-                        <Route path="/schools/:schoolID/addEdit" component={SchoolAddOrEditPage} />
-                        <Route path="/schools/:schoolID/users/:userID/addEdit" component={SchoolUserAddOrEditPage} />
-                        <Route path="/schools/:schoolID/sports/addEdit" component={SchoolSportAddOrEditPage} />
-                        <Route path="/schools/:schoolID/sports/:sportID/manage" component={SchoolSportMgmtPage} />
-                        <Route path="/schools/:schoolID/sports/:sportID/teams/:teamID/addEdit" component={SchoolSportTeamAddOrEditPage} />
+                        <Route path="/schools/:schoolID/addEdit" render={({ match }) => <SchoolAddOrEditPage match={match} />} />
+                        <Route path="/schools/:schoolID/users/:userID/addEdit" render={({ match }) => <SchoolUserAddOrEditPage match={match} />} />
+                        <Route path="/schools/:schoolID/sports/addEdit" render={({ match }) => <SchoolSportAddOrEditPage match={match} />} />
+                        <Route path="/schools/:schoolID/sports/:sportID/manage" render={({ match }) => <SchoolSportMgmtPage match={match} />} />
+                        <Route path="/schools/:schoolID/sports/:sportID/teams/:teamID/addEdit" render={({ match }) => <SchoolSportTeamAddOrEditPage match={match} />} />
                         <Route exact path="/tournaments" render={() => <TournamentsPage />} />
                         <Route path="/tournaments/:tournamentID/manage" render={({ match }) => <TournamentMgmtPage match={match} />} />
-                        <Route path="/tournaments/:tournamentID/addEdit" component={TournamentAddOrEditPage} />
-                        <Route path="/tournaments/:tournamentID/matches/:matchID/addEdit" component={TournamentMatchAddOrEditPage} />
-                        <Route path="/sample" component={SamplePage} />
+                        <Route path="/tournaments/:tournamentID/addEdit" render={({ match }) => <TournamentAddOrEditPage match={match} />} />
+                        <Route path="/tournaments/:tournamentID/matches/:matchID/addEdit" render={({ match }) => <TournamentMatchAddOrEditPage match={match} />} />
                     </ProvideAuth>
 
                 </Switch>

@@ -4,19 +4,31 @@ import { TournamentSportsList } from '../components/tournament/TournamentSportsL
 import { TournamentTeamsList } from '../components/tournament/TournamentTeamsList'
 import { TournamentMatchesList } from '../components/tournament/TournamentMatchesList'
 
-export const TournamentMgmtPage = (props) => {
+export const TournamentMgmtPage = ({ match }) => {
 
-    const { tournamentID } = props.match.params;
+    const { tournamentID } = match.params;
+
+    const onAddTournamentTeamClick = () => {
+        alert('Add Team popup coming soon');
+    }
+
+    const onAddTournamentSportClick = () => {
+        alert('Add Sports popup coming soon');
+    }
 
     return (
         <>
             <h1>Tournament Management</h1>
-            <h1>Sports</h1>
-            <TournamentSportsList tournamentID={tournamentID} />
             <h1>Teams</h1>
+            <button key='btnAddTournamentTeam' onClick={() => onAddTournamentTeamClick()} >
+                Add Team
+            </button>
             <TournamentTeamsList tournamentID={tournamentID} />
-            <h1>Matches</h1>
-            <TournamentMatchesList tournamentID={tournamentID} />
+            <h1>Sports</h1>
+            <button key='btnAddTournamentSport' onClick={() => onAddTournamentSportClick()} >
+                Add Sport
+            </button>
+            <TournamentSportsList tournamentID={tournamentID} />
         </>
     )
 }

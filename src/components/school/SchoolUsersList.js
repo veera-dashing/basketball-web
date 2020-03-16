@@ -25,21 +25,14 @@ export const SchoolUsersList = ({ schoolID }) => {
         dispatch(fetchSchoolUsersRequest(schoolID, params, onSuccess, onError));
     }, []);
 
-    const onAddSchoolUserClick = () => {
-        history.push(`/schools/${schoolID}/users/0/AddEdit`);
-    }
-
     return (
         <>
-            <button key='btnAddSchoolUser' onClick={() => onAddSchoolUserClick()} >
-                Add User
-            </button>
             {(!schoolUsers || schoolUsers.length == 0) &&
                 <div>
                     No users have been configured for this school
                 </div>
             }
-            {schoolUsers && schoolUsers.length > 0 && 
+            {schoolUsers && schoolUsers.length > 0 &&
                 <table width={'100%'} border={'1px'}>
                     <SchoolUsersListHeader />
                     {

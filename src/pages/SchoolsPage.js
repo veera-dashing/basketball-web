@@ -17,7 +17,7 @@ export const SchoolsPage = () => {
         <>
             <h1> Schools</h1>
             <button key='btnAddSchool' onClick={() => onAddSchoolClick()} >
-                Add School
+                Add
                 </button>
             <SchoolsList />
         </>

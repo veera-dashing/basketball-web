@@ -13,6 +13,7 @@ export const SchoolSportMgmtPage = ({ match }) => {
     const { schoolID, sportID } = match.params;
 
     const dispatch = useDispatch();
+    let history = useHistory();
     const [schoolSportTeams, setSchoolSportTeams] = useState([]);
 
     //Executes on Page load
@@ -26,10 +27,17 @@ export const SchoolSportMgmtPage = ({ match }) => {
         //dispatch(fetchSchoolSportTeamsRequest(schoolID, sportID, onSuccess, onError));
     }, []);
 
+    const onAddSchoolSportTeamClick = () => {
+        history.push(`/schools/${schoolID}/sports/${sportID}/teams/0/addEdit`);
+    }
+
     return (
         <>
             <h1>Sport Management</h1>
             <h1>Teams</h1>
+            <button key='btnAddSchoolSportTeam' onClick={() => onAddSchoolSportTeamClick()} >
+                Add
+            </button>
             <SchoolSportTeamsList schoolID={schoolID} sportID={sportID} schoolSportTeams={schoolSportTeams} />
         </>
     )

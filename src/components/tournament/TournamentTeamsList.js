@@ -30,9 +30,6 @@ export const TournamentTeamsList = ({ tournamentID }) => {
 
     return (
         <>
-            <button key='btnAddTournamentTeam' onClick={() => onAddTournamentTeamClick()} >
-                Add Team
-            </button>
             {(!tournamentTeams || tournamentTeams.length == 0) &&
                 <div>
                     No teams have been configured for this tournament

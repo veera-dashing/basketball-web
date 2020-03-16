@@ -9,6 +9,10 @@ export const SchoolSportTeamsListItem = ({ schoolID, sportID, sportTeam }) => {
         history.push(`/schools/${schoolID}/sports/${sportID}/teams/${teamID}/addEdit`);
     }
 
+    const onManageSchoolSportTeam = (teamID) => {
+        alert('Manage School Sport Team coming soon');
+    }
+
     return (
         <>
             <tr>
@@ -20,7 +24,10 @@ export const SchoolSportTeamsListItem = ({ schoolID, sportID, sportTeam }) => {
                 </td>
                 <td>
                     <button key='btnEditSchoolSportTeam' onClick={() => onEditSchoolSportTeam(sportTeam.id)} >
-                        Edit Team
+                        Edit
+                    </button>
+                    <button key='btnManageSchoolSportTeam' onClick={() => onManageSchoolSportTeam(sportTeam.id)} >
+                        Manage
                     </button>
                 </td>
             </tr>

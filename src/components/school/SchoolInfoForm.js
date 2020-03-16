@@ -56,10 +56,6 @@ export const SchoolInfoForm = ({ id }) => {
         }
     }
 
-    const onCancelInfoFormClick = () => {
-        history.push(`/schools`);
-    }
-
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: currentSchool,
@@ -69,6 +65,10 @@ export const SchoolInfoForm = ({ id }) => {
             onSaveSchool(values);
         },
     });
+
+    const onCancelInfoFormClick = () => {
+        history.push(`/schools`);
+    }
 
     return (
         <form onSubmit={formik.handleSubmit}>

@@ -21,7 +21,7 @@ export const SchoolSportsListItem = ({ schoolID, schoolSport }) => {
                 </td>
                 <td>
                     <button key='btnManageSchoolSport' onClick={() => onManageSchoolSportClick(schoolSport.id)} >
-                        Manage Sport
+                        Manage
                 </button>
                 </td>
             </tr>

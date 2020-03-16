@@ -23,15 +23,8 @@ export const SchoolSportsList = ({ schoolID }) => {
         dispatch(fetchSchoolSportsRequest(schoolID, onSuccess, onError));
     }, []);
 
-    const onUpdateSchoolSportClick = () => {
-        history.push();
-    }
-
     return (
         <>
-            <button key='btnUpdateSchoolSport' onClick={() => onUpdateSchoolSportClick()} >
-                Update Sports
-            </button>
             {(!schoolSports || schoolSports.length == 0) &&
                 <div>
                     No sports have been configured for this school
